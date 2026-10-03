@@ -1,0 +1,12 @@
+prediction,status,detail
+P1_equivariant_raw_even_zero,PASS,"max raw even expectation=0.000e+00 (all inits, n=180)"
+P2a_odd_methods_above_odd_ols_rmse,PASS,"0 bound violations over 360 rows (equivariant=180, spherical_odd=180); ceiling inconsistencies=0; minimum signed slack=4.510e-13; minimum slack/tolerance=3.837e-03; maximum violation=0.000e+00; maximum repeated-ceiling spread=0.000e+00; closest row=(double_sawtooth/equivariant/L=3/seed=7, slack=4.510e-13, tol=1.175e-10); rtol=1.0e-09, atol=1.0e-16"
+P2b_odd_methods_above_odd_ridge_objective,PASS,"0 bound violations over 360 rows (equivariant=180, spherical_odd=180); ceiling inconsistencies=0; minimum signed slack=1.719e-15; minimum slack/tolerance=1.244e-04; maximum violation=0.000e+00; maximum repeated-ceiling spread=0.000e+00; closest row=(double_sawtooth/spherical_odd/L=1/seed=19, slack=1.719e-15, tol=1.382e-11); rtol=1.0e-09, atol=1.0e-20"
+P3a_rank_within_sector_bound,PASS,0 cells exceed bound
+P3b_equivariant_rank_exactly_8,PASS,"rank ranges [(8, 8), (8, 8), (8, 8)]; min sigma8/sigma1=4.894e-05, median sigma8/sigma9 gap=1.300e+15"
+P5_sector_dose_response,PASS,"triangle odd-prior free=True, double_sawtooth odd-prior total=True"
+P4a_rms_vs_variance_model,PASS,"median cellwise RMS/predicted ||dc||=0.998; 10-90% [0.919, 1.080] over 2160 cells (predicted 1.000)"
+P4a_naive_counting_ratio,INFO,median generic/equivariant ||dc||=1.71 (1.73 expected ONLY at W=I with comparable scales)
+P4b_mean_mse_degradation_ratio,INFO,median of cellwise mean-degradation ratios=2.93 over 9 cells (regime-dependent; see P4c)
+P4c_mse_degradation_exponent,INFO,"median log-log slope of mean MSE degradation=-1.01 over 27 fits (-1 second order, -0.5 first order dominates)"
+P6_preconditioning,INFO,preconditioner: decay_p=0.0

@@ -1,0 +1,10 @@
+n_layers,kind,bound,n_circuit_params,effective_circuit_params,n_decoder_scales,rank_circuit_min,rank_circuit_median,rank_circuit_max,rank_decoder_min,rank_decoder_max,rank_combined_min,rank_combined_max,scales_add_dimensions,sigma_circuit_at_bound_min,n_points,rank_rtol
+1,generic,16,12,12,4,12,12.0,12,4,4,16,16,4,0.0,25,1e-08
+1,equivariant,8,12,8,4,7,8.0,8,2,2,8,8,0,8.174367661366939e-09,25,1e-08
+1,sector_mixed,16,12,10,4,10,10.0,10,4,4,14,14,4,0.0,25,1e-08
+2,generic,16,19,19,4,16,16.0,16,4,4,16,16,0,9.92003701103503e-06,25,1e-08
+2,equivariant,8,19,13,4,8,8.0,8,2,2,8,8,0,9.805541162678447e-05,25,1e-08
+2,sector_mixed,16,19,15,4,15,15.0,15,4,4,16,16,1,8.241334404747659e-13,25,1e-08
+3,generic,16,26,26,4,16,16.0,16,4,4,16,16,0,0.0012001091232112843,25,1e-08
+3,equivariant,8,26,18,4,8,8.0,8,2,2,8,8,0,0.0012585320392869616,25,1e-08
+3,sector_mixed,16,26,20,4,15,15.0,15,4,4,16,16,1,5.883786088849447e-14,25,1e-08

@@ -1,0 +1,7 @@
+{
+  "python": "3.11.9",
+  "numpy": "2.4.1",
+  "scipy": "1.17.1",
+  "pandas": "3.0.0",
+  "platform": "Windows-10-10.0.26200-SP0"
+}

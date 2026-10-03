@@ -1,0 +1,226 @@
+macro,value,tex,source
+DoseTriangleZero,0.1185679148198624,\ensuremath{0.118568},full_p0/exact nested_rmse triangle/zero
+DoseTriangleEven,0.1177861263043996,\ensuremath{0.117786},full_p0/exact nested_rmse triangle/ols_even
+DoseTriangleOdd,2.158905850557928e-06,\ensuremath{0.000002},full_p0/exact nested_rmse triangle/ols_odd
+DoseTriangleFull,1.6545990721022358e-06,\ensuremath{0.000002},full_p0/exact nested_rmse triangle/ols_full
+DoseSawtoothZero,0.2546010785589018,\ensuremath{0.254601},full_p0/exact nested_rmse sawtooth/zero
+DoseSawtoothEven,0.2269547453151418,\ensuremath{0.226955},full_p0/exact nested_rmse sawtooth/ols_even
+DoseSawtoothOdd,0.119608023733016,\ensuremath{0.119608},full_p0/exact nested_rmse sawtooth/ols_odd
+DoseSawtoothFull,8.785943510548279e-05,\ensuremath{0.000088},full_p0/exact nested_rmse sawtooth/ols_full
+DoseDoubleSawtoothZero,0.1185679148198623,\ensuremath{0.118568},full_p0/exact nested_rmse double_sawtooth/zero
+DoseDoubleSawtoothEven,7.847941766820446e-05,\ensuremath{0.000078},full_p0/exact nested_rmse double_sawtooth/ols_even
+DoseDoubleSawtoothOdd,0.1177997608065209,\ensuremath{0.117800},full_p0/exact nested_rmse double_sawtooth/ols_odd
+DoseDoubleSawtoothFull,7.237781801870581e-05,\ensuremath{0.000072},full_p0/exact nested_rmse double_sawtooth/ols_full
+EvenShareRatio,0.4697860056603993,\ensuremath{0.470},"sawtooth ols_odd/zero, nested"
+EvenSharePct,0.22069889111435273,\ensuremath{22\%},square of EvenShareRatio
+RidgeOddNested,2.2155646363175006e-06,\ensuremath{2.216\times10^{-6}},triangle ridge_odd nested
+OLSOddNested,2.158905850557928e-06,\ensuremath{2.159\times10^{-6}},triangle ols_odd nested
+OddReferenceBits,18.821268240227244,\ensuremath{18.8},-log2 triangle ols_odd nested
+SphericalOddNested,2.280986141685125e-06,\ensuremath{2.281\times10^{-6}},p0 summary
+PlateauRMSE,4.793549346496628e-05,\ensuremath{4.794\times10^{-5}},p0 summary equivariant L=3
+PlateauBits,14.348546190425754,\ensuremath{14.35},-log2 PlateauRMSE
+NullFactor,21.015249759278657,\ensuremath{21},"plateau / spherical_odd, default tolerance only"
+NullEvals,1115.0,"1{,}115",p0 summary
+QuantumEvalsMin,2507.5,"2{,}508","triangle equivariant, both decoders, all L"
+QuantumEvalsMax,7781.0,"7{,}781","triangle equivariant, both decoders, all L"
+PrecondGain,3.3624462443275784,\ensuremath{3.4},comparison gap_ratio L=1
+NfevPzeroLOne,5465.5,"5{,}466",comparison
+NfevMatchedLOne,2507.5,"2{,}508",comparison
+SectorOptSuccessPzero,0.9981481481481481,\ensuremath{100\%},p0 exact
+SectorOptSuccessMatched,0.9981481481481481,\ensuremath{100\%},matched exact
+SlackRMSEPzero,4.510003481783542e-13,\ensuremath{4.510\times10^{-13}},P2a
+SlackObjectivePzero,1.8006429680639258e-15,\ensuremath{1.801\times10^{-15}},P2b
+PtwoRowsPzero,360.0,360,rows checked in P2
+SlackRMSEMatched,2.2179480474449065e-13,\ensuremath{2.218\times10^{-13}},P2a
+SlackObjectiveMatched,1.8006429680639258e-15,\ensuremath{1.801\times10^{-15}},P2b
+PtwoRowsMatched,360.0,360,rows checked in P2
+RawEvenMax,0.0,\ensuremath{0},"P1, worst over both decoders"
+RawEvenMaxPzero,0.0,\ensuremath{0},"P1, this decoder"
+EquivariantModelsPzero,180.0,180,trained equivariant models
+RawEvenMaxMatched,0.0,\ensuremath{0},"P1, this decoder"
+EquivariantModelsMatched,180.0,180,trained equivariant models
+EquivariantModels,180.0,180,"trained equivariant models, p0"
+RankGenericLOne,16.0,16,jacobian_ranks
+RankGenericLTwo,16.0,16,jacobian_ranks
+RankGenericLThree,16.0,16,jacobian_ranks
+LiveParamsGenericLOne,12.0,12,effective circuit params L=1
+RankSectorMixedLOne,14.0,14,jacobian_ranks
+RankSectorMixedLTwo,16.0,16,jacobian_ranks
+RankSectorMixedLThree,16.0,16,jacobian_ranks
+LiveParamsSectorMixedLOne,10.0,10,effective circuit params L=1
+RankEquivariantLOne,8.0,8,jacobian_ranks
+RankEquivariantLTwo,8.0,8,jacobian_ranks
+RankEquivariantLThree,8.0,8,jacobian_ranks
+LiveParamsEquivariantLOne,8.0,8,effective circuit params L=1
+RankRtol,1e-08,\ensuremath{1\times10^{-8}},rank threshold
+SigmaEightMin,4.894265709584953e-05,\ensuremath{4.894\times10^{-5}},"min sigma_8/sigma_1, equivariant"
+GenericLOneSigmaMin,1.6394047734701002e-08,\ensuremath{1.639\times10^{-8}},"min sigma_16/sigma_1, generic L=1 (fragile cell)"
+GenericLOneMargin,1.6394047734701003,\ensuremath{1.6},margin above threshold
+RankCircuitEquivLThree,8.0,8,"circuit-only Jacobian rank, equivariant L=3"
+RankDecoderEquivLThree,2.0,2,"decoder-scale-only Jacobian rank, equivariant L=3"
+ScalesAddDimensions,0.0,0,"dimensions the decoder scales add beyond the circuit, equivariant"
+PfourMedianPzero,0.9976314681214608,\ensuremath{0.998},RMS/predicted
+PfourQTenPzero,0.9192774450113059,\ensuremath{0.919},10% quantile
+PfourQNinetyPzero,1.0797186991532666,\ensuremath{1.080},90% quantile
+PfourCellsPzero,2160.0,"2{,}160",model-budget cells
+PfourMedianMatched,0.9906778890297139,\ensuremath{0.991},RMS/predicted
+PfourQTenMatched,0.8591295308246623,\ensuremath{0.859},10% quantile
+PfourQNinetyMatched,1.1367065500643938,\ensuremath{1.137},90% quantile
+PfourCellsMatched,2160.0,"2{,}160",model-budget cells
+NaiveRatioPzero,1.7147427185536694,\ensuremath{1.71},generic/equivariant ||dc||
+NaiveRatioMatched,0.2980854458317059,\ensuremath{0.30},generic/equivariant ||dc||
+PfourSlopePzero,-1.0079710473678603,\ensuremath{-1.01},log-log slope of mean MSE degradation
+PfourSlopeMatched,-1.003477393526755,\ensuremath{-1.00},log-log slope of mean MSE degradation
+InvBestPzeroLOne,4.362730663448757e-09,\ensuremath{4.36\times10^{-9}},inverse summary
+InvMedianPzeroLOne,0.0002053700123109,\ensuremath{2.05\times10^{-4}},inverse summary
+CondPzeroLOne,49.44286203876688,\ensuremath{4.9\times10^{1}},conditioning at best inverse
+FtolGapDefaultPzeroLOne,0.0002001661635352,\ensuremath{2.00\times10^{-4}},ftol=1e-12 median nested-RMSE gap
+FtolGapTightPzeroLOne,8.309391403346571e-05,\ensuremath{8.31\times10^{-5}},ftol=1e-18 median nested-RMSE gap
+InvBestPzeroLThree,2.4905538168494278e-09,\ensuremath{2.49\times10^{-9}},inverse summary
+InvMedianPzeroLThree,1.0652455207608837e-08,\ensuremath{1.07\times10^{-8}},inverse summary
+CondPzeroLThree,18.17786453259569,\ensuremath{1.8\times10^{1}},conditioning at best inverse
+FtolGapDefaultPzeroLThree,4.571992882864877e-05,\ensuremath{4.57\times10^{-5}},ftol=1e-12 median nested-RMSE gap
+FtolGapTightPzeroLThree,1.3206944775744526e-07,\ensuremath{1.32\times10^{-7}},ftol=1e-18 median nested-RMSE gap
+InvBestMatchedLOne,1.0587905324815229e-07,\ensuremath{1.06\times10^{-7}},inverse summary
+InvMedianMatchedLOne,0.0001701212621014,\ensuremath{1.70\times10^{-4}},inverse summary
+CondMatchedLOne,1158.0310674413895,\ensuremath{1.2\times10^{3}},conditioning at best inverse
+FtolGapDefaultMatchedLOne,5.952992226206997e-05,\ensuremath{5.95\times10^{-5}},ftol=1e-12 median nested-RMSE gap
+FtolGapTightMatchedLOne,4.4305928901513255e-05,\ensuremath{4.43\times10^{-5}},ftol=1e-18 median nested-RMSE gap
+InvBestMatchedLThree,4.5888691003011764e-08,\ensuremath{4.59\times10^{-8}},inverse summary
+InvMedianMatchedLThree,2.4535106890928755e-06,\ensuremath{2.45\times10^{-6}},inverse summary
+CondMatchedLThree,1424.1504148466142,\ensuremath{1.4\times10^{3}},conditioning at best inverse
+FtolGapDefaultMatchedLThree,5.521654831983711e-05,\ensuremath{5.52\times10^{-5}},ftol=1e-12 median nested-RMSE gap
+FtolGapTightMatchedLThree,2.9101227203334927e-05,\ensuremath{2.91\times10^{-5}},ftol=1e-18 median nested-RMSE gap
+ResidualTangentFraction,1.0000000000000004,\ensuremath{1.000},residual in tangent space at best p0 inverse
+TightRMSE,2.347634084074946e-06,\ensuremath{2.348\times10^{-6}},p0 L=3 ftol=1e-18
+TightBits,18.70036101020734,\ensuremath{18.7},-log2 TightRMSE
+TightObjectiveGap,2.0434286719410049e-13,\ensuremath{2.04\times10^{-13}},median objective gap to ridge
+TightNfev,14399.5,"14{,}400",median nfev at 1e-18
+TightFracCeiling,0.6,\ensuremath{60\%},share of restarts with objective gap < 1e-12 at ftol=1e-18
+FtolSeeds,20.0,20,restarts per ftol cell
+TermNfevDefault,7781.0,"7{,}781","median nfev, p0 L=3, ftol=1e-12"
+TermNfevTight,14399.5,"14{,}400","median nfev, p0 L=3, ftol=1e-18"
+TermGradDefault,1.2385491607972966e-07,\ensuremath{1.24\times10^{-7}},"median |grad|_inf, ftol=1e-12"
+TermGradTight,1.5140195966136958e-08,\ensuremath{1.51\times10^{-8}},"median |grad|_inf, ftol=1e-18"
+TermFracCeilingDefault,0.1,\ensuremath{10\%},restarts reaching the ridge optimum at ftol=1e-12
+TermFracCeilingMid,0.55,\ensuremath{55\%},restarts reaching the ridge optimum at ftol=1e-15
+IdemSeeds,20.0,20,restarts in the idempotence test
+IdemExtraNfev,62.0,62,median further evaluations before the criterion fires again
+IdemFracMoved,0.0,\ensuremath{0\%},restarts improving nested RMSE by more than a tenth
+TightRestartRatio,0.993418871142838,0.99,"paired ratio, restart at ftol=1e-18 against the continuous run"
+TightRestartWithinTwo,0.95,\ensuremath{95\%},seeds whose tighter-rule restart lands within 2x of the continuous run
+TightRestartExtraNfev,4030.0,"4{,}030",median evaluations used by the tighter-rule restart
+TightRestartMoved,0.85,\ensuremath{85\%},restarts at ftol=1e-18 improving nested RMSE by more than a tenth
+TightRestartMedianNested,2.252585083107714e-06,\ensuremath{2.253\times10^{-6}},median nested RMSE after restarting at ftol=1e-18
+TopoCircuitOpts,2160.0,"2{,}160",circuit optimisations
+TopoSphericalFits,40.0,40,distinct fits
+TopoLogMonoFits,2.0,2,distinct fits
+TopoBaselineOpts,42.0,42,distinct classical optimisations
+TopoBaselineRows,126.0,126,classical rows (repeated per depth)
+TopoRefKEight,0.0337162983969605,\ensuremath{0.0337},direct_log_monomial nested RMSE
+TopoZeroKEight,0.1825225306395437,\ensuremath{0.1825},zero polynomial nested RMSE
+TopoRefKSixteen,0.1573369999716129,\ensuremath{0.1573},direct_log_monomial nested RMSE
+TopoZeroKSixteen,0.1825928804323427,\ensuremath{0.1826},zero polynomial nested RMSE
+TopoSuccessFraction,0.0,\ensuremath{0\%},within 1e-4 of reference
+TopoRMSEMin,0.0372961458089201,\ensuremath{0.037},cell medians
+TopoRMSEMax,0.1628731878936158,\ensuremath{0.163},cell medians
+TopoOptSuccessMin,0.9,\ensuremath{90\%},per-cell optimizer success
+TopoOptSuccessMax,1.0,\ensuremath{100\%},per-cell optimizer success
+TopoOptSuccessAll,0.9967592592592592,\ensuremath{100\%},overall optimizer success
+TopoBudgetStopAll,0.0032407407407407406,\ensuremath{0\%},restarts stopped on an optimiser budget
+TopoMaxfun,1000000.0,"1{,}000{,}000",function-evaluation cap of the analysed run
+TopoEvalLimitKEightLOne,0.002777777777777778,\ensuremath{0\%},share stopped by iteration/evaluation limit
+TopoEvalLimitKEightLTwo,0.008333333333333333,\ensuremath{1\%},share stopped by iteration/evaluation limit
+TopoEvalLimitKEightLThree,0.005555555555555556,\ensuremath{1\%},share stopped by iteration/evaluation limit
+TopoEvalLimitKSixteenLOne,0.0,\ensuremath{0\%},share stopped by iteration/evaluation limit
+TopoEvalLimitKSixteenLTwo,0.0,\ensuremath{0\%},share stopped by iteration/evaluation limit
+TopoEvalLimitKSixteenLThree,0.002777777777777778,\ensuremath{0\%},share stopped by iteration/evaluation limit
+DecMatchedKEightLOne,0.06782049159265596,\ensuremath{0.0678},
+DecMismatchedKEightLOne,0.055818456550492404,\ensuremath{0.0558},
+DecMatchedKEightDeep,0.039819388520280496,\ensuremath{0.0398},
+DecMismatchedKEightDeep,0.050647132805828596,\ensuremath{0.0506},
+TopoKSixteenCentre,0.15808929940252775,\ensuremath{0.158},"K=16, L>=2 cell medians"
+TopoKSixteenSpread,0.011104844741360361,\ensuremath{1.1\%},relative spread
+TopoRecoveryKSixteen,0.9531553969333464,\ensuremath{0.95},recovery = (zero-model)/(zero-reference)
+TopoContrastsPerMetric,114.0,114,
+TopoPvalues,228.0,228,jointly Holm-adjusted
+TopoNPhase,54.0,54,
+TopoNDecoder,36.0,36,
+TopoNCrossNearest,12.0,12,
+TopoNCrossMirror,12.0,12,
+TopoResolved,45.0,45,p_holm < 0.05
+TopoMinPHolm,0.00043487548828125,\ensuremath{0.000},smallest adjusted p
+TopoMinPRaw,1.9073486328125e-06,\ensuremath{1.9\times10^{-6}},smallest unadjusted p
+TopoAbsDiffMin,2.013744601625511e-09,\ensuremath{2.0\times10^{-9}},median differences
+TopoAbsDiffMax,0.028132229536438458,\ensuremath{2.8\times10^{-2}},median differences
+TopoCIExcludeZero,93.0,93,"pointwise 95% bootstrap CIs excluding 0, whole family (not multiplicity-adjusted)"
+TopoCIExcludeZeroResolved,45.0,45,resolved contrasts whose bootstrap CI excludes 0
+TopoCIExcludeZeroUnresolved,48.0,48,UNresolved contrasts whose pointwise CI excludes 0 (multiplicity illustration)
+TopoPhaseAbsDiffMax,0.00539132439673725,\ensuremath{0.0054},"largest phase-rule effect, resolved or not"
+TopoResolvedPhase,0.0,0,"resolved contrasts, oriented_minus_uniform"
+TopoResolvedDecoder,25.0,25,"resolved contrasts, matched_minus_mean_mismatched"
+TopoResolvedCrossNearest,10.0,10,"resolved contrasts, crossed_minus_nearest_matched"
+TopoResolvedCrossMirror,10.0,10,"resolved contrasts, crossed_minus_mirror_matched"
+TopoResolvedKEight,39.0,39,resolved contrasts in this carry-range condition
+TopoResolvedKSixteen,6.0,6,resolved contrasts in this carry-range condition
+TopoResolvedEffectMin,0.0009222572128916584,\ensuremath{0.0009},resolved effects
+TopoResolvedEffectMax,0.028132229536438458,\ensuremath{0.0281},resolved effects
+TopoCrossEffectMin,0.01015756691654705,\ensuremath{0.0102},resolved crossed contrasts
+TopoCrossEffectMax,0.028132229536438458,\ensuremath{0.0281},resolved crossed contrasts
+TopoCrossSameSign,1.0,yes,all resolved crossed contrasts share a sign
+MmFeasDefault,0.1,\ensuremath{10\%},"Mamedaliev F, p0 L=3, ftol=1e-12"
+MmFeasDefaultLo,0.02786648096169142,\ensuremath{3\%},"Wilson lower on F, p0 L=3, ftol=1e-12"
+MmFeasDefaultHi,0.3010336471864123,\ensuremath{30\%},"Wilson upper on F, p0 L=3, ftol=1e-12"
+MmQualDefault,0.19615152158276575,0.20,"Mamedaliev Q (not reported), p0 L=3, ftol=1e-12"
+MmReprDefault,0.5750630971391879,0.58,"Mamedaliev R (not reported), p0 L=3, ftol=1e-12"
+MmFeasMid,0.55,\ensuremath{55\%},"Mamedaliev F, p0 L=3, ftol=1e-15"
+MmFeasMidLo,0.3420853410191274,\ensuremath{34\%},"Wilson lower on F, p0 L=3, ftol=1e-15"
+MmFeasMidHi,0.7418021429623598,\ensuremath{74\%},"Wilson upper on F, p0 L=3, ftol=1e-15"
+MmQualMid,5.029552725551047,5.03,"Mamedaliev Q (not reported), p0 L=3, ftol=1e-15"
+MmReprMid,0.5056810945375765,0.51,"Mamedaliev R (not reported), p0 L=3, ftol=1e-15"
+MmFeasTight,0.6,\ensuremath{60\%},"Mamedaliev F, p0 L=3, ftol=1e-18"
+MmFeasTightLo,0.3865814992347542,\ensuremath{39\%},"Wilson lower on F, p0 L=3, ftol=1e-18"
+MmFeasTightHi,0.7811934687282198,\ensuremath{78\%},"Wilson upper on F, p0 L=3, ftol=1e-18"
+MmQualTight,4.662511991195902,4.66,"Mamedaliev Q (not reported), p0 L=3, ftol=1e-18"
+MmReprTight,0.484948500216801,0.48,"Mamedaliev R (not reported), p0 L=3, ftol=1e-18"
+MmFeasMatchedMax,0.05,\ensuremath{5\%},largest F over decay-matched cells
+MmFeasMatchedMaxHi,0.23613119546428119,\ensuremath{24\%},largest Wilson upper bound on F over decay-matched cells
+MmRestarts,20.0,20,restarts per cell in the Mamedaliev comparison
+ThomosBudget,15000.0,"15{,}000",evaluation budget per optimiser
+ThomosCobylaNested,0.00087695415309445,\ensuremath{8.770\times10^{-4}},COBYLA median nested RMSE
+ThomosSpsaNested,0.0034857740903905003,\ensuremath{3.486\times10^{-3}},SPSA median nested RMSE
+ThomosRatio,3.9748646814551027,3.97,ratio of the two medians
+ThomosCobylaCeiling,0.0,\ensuremath{0\%},COBYLA restarts reaching the sector optimum
+ThomosSpsaCeiling,0.0,\ensuremath{0\%},SPSA restarts reaching the sector optimum
+ThomosCobylaBudgetStop,1.0,\ensuremath{100\%},COBYLA runs stopped by the evaluation budget
+SchreiberCells,18.0,18,cells in the surrogate comparison
+SchreiberShortCells,0.0,0,cells where the surrogate falls short of the ridge optimum
+SchreiberGapLOne,88.72554044626347,\ensuremath{89},"quantum/surrogate median nested RMSE, triangle, unweighted, L=1"
+SchreiberGapLTwo,57.897650529777096,\ensuremath{58},"quantum/surrogate median nested RMSE, triangle, unweighted, L=2"
+SchreiberGapLThree,21.015249759278657,\ensuremath{21},"quantum/surrogate median nested RMSE, triangle, unweighted, L=3"
+NoisySeeds,20.0,20,noise realisations per level
+NoisyTrainPoints,163.0,163,masked training points
+NoisyNaiveLow,9.47417500866188,\ensuremath{9},"quantum/full, sigma_rel=1e-4, study tolerance"
+NoisyNaiveHigh,0.7370881270260051,\ensuremath{0.74},"quantum/full, sigma_rel=1e-2, study tolerance"
+NoisyNaiveHighP,1.9073486328125e-06,\ensuremath{1.9\times10^{-6}},"Wilcoxon p, quantum vs full"
+NoisyNaiveTop,0.743193955283719,\ensuremath{0.74},"quantum/full, sigma_rel=3e-2, study tolerance"
+NoisyPriorHigh,1.001567918453679,\ensuremath{1.002},"quantum/odd optimum, sigma_rel=1e-2, study tolerance"
+NoisyPriorHighP,0.8408222198486328,\ensuremath{0.841},"Wilcoxon p, quantum vs odd optimum"
+NoisyNullHigh,1.0009897434254011,\ensuremath{1.001},"quantum/null, sigma_rel=1e-2, study tolerance"
+NoisyNullHighP,0.956329345703125,\ensuremath{0.956},"Wilcoxon p, quantum vs null"
+NoisyFullOverOdd,1.351791426475635,\ensuremath{1.35},"full/odd clean RMSE, sigma_rel=1e-2 (sqrt 2 predicted)"
+NoisyBeatsPrior,5.0,5,"seeds beating the odd optimum on clean data, sigma_rel=1e-2"
+NoisyBeatsPriorShort,5.0,5,"of those, seeds whose noisy training objective is above the optimum"
+NoisyTightPrior,1.0000217549638006,\ensuremath{1.000},"quantum/odd optimum, sigma_rel=1e-2, tight tolerance"
+NoisyTightPriorP,0.8408222198486328,\ensuremath{0.841},"Wilcoxon p, quantum vs odd optimum, tight tolerance"
+NoisyNaiveMidStudy,1.6201419885964163,\ensuremath{1.62},"quantum/full, sigma_rel=1e-3, study tolerance"
+NoisyNaiveMidStudyP,0.01923370361328125,\ensuremath{0.019},Wilcoxon p
+NoisyNaiveMidTight,0.8477807758898332,\ensuremath{0.85},"quantum/full, sigma_rel=1e-3, tight tolerance"
+NoisyNaiveMidTightP,0.34881019592285156,\ensuremath{0.349},Wilcoxon p
+NoisyPredFull,0.0003707843894467683,\ensuremath{3.71\times10^{-4}},"predicted full, 1%"
+NoisyPredOdd,0.00026218415613592363,\ensuremath{2.62\times10^{-4}},"predicted odd, 1%"
+NoisyObsFull,0.00035944124320145003,\ensuremath{3.59\times10^{-4}},"observed full, 1%"
+NoisyObsOdd,0.00026378829994075,\ensuremath{2.64\times10^{-4}},"observed odd, 1%"
+NoisyBeatsPriorTotal,16.0,16,"runs beating the odd optimum by >1% on clean data, sigma_rel >= 1e-2, both tolerances"
+NoisyBeatsPriorShortTotal,16.0,16,"of those, runs whose noisy training objective is above the optimum"
+NoisyNaiveWins,20.0,20,"realisations where quantum beats the full fit, sigma_rel=1e-2, study tolerance"

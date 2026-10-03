@@ -1,0 +1,7 @@
+# Versions used to produce the reported results (Python 3.11 or later).
+numpy==2.4.1
+scipy==1.17.1
+pandas==3.0.0
+matplotlib>=3.8
+pytest>=8.0
+jupyter>=1.0
