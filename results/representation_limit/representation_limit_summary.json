@@ -1,0 +1,48 @@
+{
+  "rules_version": "1.3",
+  "construction": {
+    "kind": "equivariant",
+    "n_layers": 3,
+    "frozen_scale": -1.0,
+    "target_factor": 5.0,
+    "alpha": 1e-08,
+    "delta": 0.06,
+    "smoke": false
+  },
+  "ground_truth": {
+    "floor_train_rmse": 0.06972568282762663,
+    "envelope": 0.36787944117144233,
+    "box_active": 3,
+    "class_train_rmse": 9.288612479641464e-06,
+    "floor_over_class": 7506.576787485704
+  },
+  "stopping_scale": {
+    "f_ref": 1.0219057396065708e-08,
+    "fit_term": 8.627832179695113e-11,
+    "threshold": 1e-12,
+    "threshold_over_objective": 9.785638354326061e-05,
+    "threshold_over_fit": 0.011590396975423524
+  },
+  "evidence": {
+    "observed": 0.10490657133829495,
+    "reference": "class",
+    "optimizer_success": true,
+    "restarts_agree": true,
+    "class_optimum": 1.107782318079879e-05,
+    "unrestricted_optimum": 8.677314497771338e-06,
+    "null_result": 1.1128308314806237e-05,
+    "inverse_best": 0.3949950500632217,
+    "scale_check_fails": true,
+    "normalised_result": 0.10490657071198968,
+    "exact_result": null,
+    "noise_ratio": null
+  },
+  "verdicts": {
+    "all components": "reachability",
+    "without 1": "reachability",
+    "without 2": "reachability",
+    "without 4": "reachability",
+    "without 5": "reachability",
+    "without 4 and 5": "reachability"
+  }
+}
