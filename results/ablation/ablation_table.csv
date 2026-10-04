@@ -1,0 +1,19 @@
+case,cause_known_by,expected,predicted_shot_rmse,normalised_closes,all,without 1,without 2,without 3,without 4,without 5,without 6,without 4+5,correct_with_all,rules_version
+triangle_plateau,diagnosed (component 5),optimiser,,0.9811664961654679,optimiser,optimiser,optimiser,optimiser,optimiser,optimiser,optimiser,undetermined,True,1.3
+prior_sawtooth,"theorem (selection rule, closed-form optimum)",prior,,,prior,none,prior,prior,prior,prior,prior,prior,True,1.3
+prior_double_sawtooth,"theorem (selection rule, closed-form optimum)",prior,,,prior,none,prior,prior,prior,prior,prior,prior,True,1.3
+readout_sawtooth_300,construction (sampling noise on converged fit),readout,0.2741360375231571,,readout,readout,readout,readout,readout,readout,undetermined,readout,True,1.3
+readout_sawtooth_1500,construction (sampling noise on converged fit),readout,0.16271132345220862,,readout,readout,readout,readout,readout,readout,undetermined,readout,True,1.3
+readout_sawtooth_3000,construction (sampling noise on converged fit),readout,0.1427953981870676,,readout,readout,readout,readout,readout,readout,reachability,readout,True,1.3
+readout_sawtooth_15000,construction (sampling noise on converged fit),none,0.12459119758020767,,none,none,none,none,none,none,none,none,True,1.3
+readout_double_sawtooth_300,construction (sampling noise on converged fit),none,0.1254721940934733,,none,none,none,none,none,none,none,none,True,1.3
+readout_double_sawtooth_1500,construction (sampling noise on converged fit),none,0.11937370272734861,,none,none,none,none,none,none,none,none,True,1.3
+readout_double_sawtooth_3000,construction (sampling noise on converged fit),none,0.1185893421828593,,none,none,none,none,none,none,none,none,True,1.3
+readout_double_sawtooth_15000,construction (sampling noise on converged fit),none,0.11795809857989407,,none,none,none,none,none,none,none,none,True,1.3
+compound_triangle_300,compound (stopping rule and readout),compound,0.03622420998179507,0.9939349788997713,optimiser,optimiser,optimiser,optimiser,optimiser,optimiser,optimiser,reachability,,1.3
+compound_triangle_1500,compound (stopping rule and readout),compound,0.016200015926234868,0.9933968350394066,optimiser,optimiser,optimiser,optimiser,optimiser,optimiser,optimiser,undetermined,,1.3
+compound_triangle_3000,compound (stopping rule and readout),compound,0.01145519126470173,0.9931494316412667,optimiser,optimiser,optimiser,optimiser,optimiser,optimiser,optimiser,undetermined,,1.3
+compound_triangle_15000,compound (stopping rule and readout),compound,0.005123096683784741,0.992411835445591,optimiser,optimiser,optimiser,optimiser,optimiser,optimiser,optimiser,reachability,,1.3
+generic_sawtooth,diagnosed (component 5),optimiser,,0.5787639198091942,optimiser,optimiser,optimiser,optimiser,optimiser,undetermined,optimiser,undetermined,True,1.3
+generic_double_sawtooth,diagnosed (component 5),optimiser,,0.8389396198463055,optimiser,optimiser,optimiser,optimiser,optimiser,undetermined,optimiser,undetermined,True,1.3
+representation_limit,construction (certified envelope),reachability,,6.520535679580977e-10,reachability,reachability,reachability,reachability,reachability,reachability,reachability,reachability,True,1.3
