@@ -255,7 +255,7 @@ def _check_reproduces_sweep(idem: pd.DataFrame, args) -> None:
     print(f"\nfirst leg vs ftol_sweep.csv at ftol=1e-12: "
           f"{len(merged)} seeds, worst relative difference {worst:.2e}")
     if worst > 1e-6:
-        print("  mismatch: first leg does not reproduce ftol_sweep.csv; check OPT_STUDY")
+        raise AssertionError("first leg does not reproduce ftol_sweep.csv; check OPT_STUDY")
     else:
         print("  first leg reproduces ftol_sweep.csv")
 

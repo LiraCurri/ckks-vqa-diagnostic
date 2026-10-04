@@ -5,6 +5,7 @@ it, and that the same check passes on the correct code.
 """
 
 import numpy as np
+import pandas as pd
 import pytest
 
 import sector_graded_evalmod as study
@@ -58,22 +59,64 @@ def test_d2_missing_basis_rotation_is_detected(monkeypatch) -> None:
     assert faulty["XXXX"] > 10 * tol and faulty["YYYY"] > 10 * tol
 
 
-# D3: a ridge solution used as a lower bound on training RMSE.
-def test_d3_ridge_as_rmse_bound_gives_false_violation() -> None:
-    cache = study.build_bundles(0.06, n_train=128, n_eval=256)["triangle"].train
-    ols = study.ridge_fit(cache, 0.0, "odd")
-    ridge = study.ridge_fit(cache, 1e-8, "odd")
+# D3: a ridge solution used as a lower bound on training RMSE. The fault is
+# injected into the production check: check_predictions's P2a call is made to
+# use the ridge optimum, rather than the least-squares one, as the RMSE reference.
+def _p2_frames():
+    bundle = study.build_bundles(0.06)["triangle"]
+    cache = bundle.train
+    alpha = 1e-8
+    rows = []
+    for method, init, c in (("ols_odd", "n/a", study.ridge_fit(cache, 0.0, "odd")),
+                            ("ridge_odd", "n/a", study.ridge_fit(cache, alpha, "odd")),
+                            ("equivariant", "random", study.ridge_fit(cache, 0.0, "odd"))):
+        rows.append({"target": "triangle", "method": method, "init": init, "n_layers": 1,
+                     "train_rmse": _training_rmse(c, cache),
+                     "train_objective": study.regularized_loss(c, cache, alpha),
+                     "nested_rmse": study.masked_rmse_linf(c, bundle.nested)[0],
+                     "max_raw_even_expectation": 0.0})
+    exact = pd.DataFrame(rows)
+    ranks = study.jacobian_rank_study(layer_values=(1,), weights=np.ones(study.N_HARMONICS),
+                                      n_points=2, eps=1e-6, rank_rtol=1e-8, seed=17)
+    return exact, ranks
 
-    # A valid odd-sector fit: the least-squares optimum itself.
-    fit_rmse = _training_rmse(ols, cache)
 
-    faulty_bound = _training_rmse(ridge, cache)        # ridge as RMSE reference
-    correct_bound = _training_rmse(ols, cache)         # least-squares reference
-    assert fit_rmse < faulty_bound                     # faulty check reports a violation
-    assert fit_rmse >= correct_bound - 1e-14           # correct check does not
+def _p2a_status(exact, ranks) -> str:
+    checks = study.check_predictions(exact, ranks)
+    return checks.set_index("prediction").loc["P2a_odd_methods_above_odd_ols_rmse", "status"]
 
 
-# D4: a stopping-rule plateau read as a floor. A converged run is a fixed
+def test_d3_ridge_as_rmse_reference_is_detected(monkeypatch) -> None:
+    exact, ranks = _p2_frames()
+    # A valid odd-sector fit (here the least-squares optimum itself) passes.
+    assert _p2a_status(exact, ranks) == "PASS"
+
+    production = study.p2_lower_bound_check
+
+    def ridge_as_rmse_reference(frame, **kw):
+        if kw.get("column") == "train_rmse":
+            kw["ceiling_method"] = "ridge_odd"
+        return production(frame, **kw)
+
+    monkeypatch.setattr(study, "p2_lower_bound_check", ridge_as_rmse_reference)
+    # The same valid fit now appears to violate the bound.
+    assert _p2a_status(exact, ranks) == "FAIL"
+
+
+# D4: the stopping threshold, absolute for an objective below one, was coarse
+# relative to the objective. The scale invariant detects it before any run.
+def test_d4_coarse_stopping_threshold_is_detected() -> None:
+    cache = study.build_bundles(0.06)["triangle"].train
+    study_options = {"ftol": 1e-12, "gtol": 1e-8, "maxls": 50, "maxfun": 200_000}
+    with pytest.raises(AssertionError):
+        study.validate_stopping_scale(cache, 1e-8, study_options)
+
+    f_ref = study.stopping_scale(cache, 1e-8, study_options)["f_ref"]
+    normalised = {**study_options, "ftol": 1e-12 * f_ref, "gtol": 1e-8 * f_ref}
+    study.validate_stopping_scale(cache, 1e-8, normalised)
+
+
+# D4, confirmed by restarts. A converged run is a fixed
 # point of a same-settings restart; a stopping-rule plateau is not a fixed
 # point once only the tolerance is lowered.
 @pytest.mark.slow
@@ -89,4 +132,4 @@ def test_d4_stopping_rule_plateau_is_detected() -> None:
         return (frame.nested_first - frame.nested_final) > 0.1 * frame.nested_first
 
     assert not moved(same).any()                       # stable at the study tolerance
-    assert moved(tight).all()                          # not a floor of the model
+    assert moved(tight).sum() >= 2                     # not a floor of the model

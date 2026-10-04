@@ -2,9 +2,12 @@
 
 Gaussian noise of standard deviation sigma (relative to the target's RMS) is
 added to the training targets; every model is scored on the clean nested and
-shifted grids. Four arms are fitted to the same noisy data per seed:
+shifted grids. Six arms are fitted to the same noisy data per seed:
 
     full_ridge      closed-form ridge fit over all 16 harmonics
+    full_ridge_cv   the same, with alpha chosen by 5-fold cross-validation
+    cv_selected     full or odd-sector fit, whichever has the lower 5-fold
+                    cross-validation error
     odd_ridge       closed-form ridge fit over the odd sector
     spherical_odd   trained dimension-matched classical null
     equivariant     trained quantum model
@@ -70,6 +73,42 @@ def noisy_cache(cache, sigma_abs: float, rng: np.random.Generator):
     return dataclasses.replace(cache, target_masked=cache.target_masked + noise)
 
 
+CV_ALPHAS = np.logspace(-10, -1, 46)
+
+
+def cv_alpha(cache, seed: int, k: int = 5) -> float:
+    """Ridge constant for the full fit chosen by k-fold cross-validation."""
+    n = cache.target_masked.size
+    folds = np.array_split(np.random.default_rng([7, seed]).permutation(n), k)
+    errors = []
+    for a in CV_ALPHAS:
+        e = 0.0
+        for f in folds:
+            keep = np.ones(n, bool)
+            keep[f] = False
+            sub = dataclasses.replace(cache, design_masked=cache.design_masked[keep],
+                                      target_masked=cache.target_masked[keep])
+            c = ridge_fit(sub, a, "full")
+            e += float(np.sum((cache.design_masked[f] @ c - cache.target_masked[f]) ** 2))
+        errors.append(e)
+    return float(CV_ALPHAS[int(np.argmin(errors))])
+
+
+def cv_error(cache, sector: str, alpha: float, seed: int, k: int = 5) -> float:
+    """k-fold cross-validation error of the ridge fit over a sector."""
+    n = cache.target_masked.size
+    folds = np.array_split(np.random.default_rng([7, seed]).permutation(n), k)
+    e = 0.0
+    for f in folds:
+        keep = np.ones(n, bool)
+        keep[f] = False
+        sub = dataclasses.replace(cache, design_masked=cache.design_masked[keep],
+                                  target_masked=cache.target_masked[keep])
+        c = ridge_fit(sub, alpha, sector)
+        e += float(np.sum((cache.design_masked[f] @ c - cache.target_masked[f]) ** 2))
+    return e
+
+
 def score(c, bundle, train, alpha) -> dict:
     nested, nested_linf = masked_rmse_linf(c, bundle.nested)
     shifted, _ = masked_rmse_linf(c, bundle.shifted)
@@ -96,7 +135,19 @@ def run(target: str, n_layers: int, sigmas, seeds, cfg: dict) -> pd.DataFrame:
             for sector in ("full", "odd"):
                 c = ridge_fit(train, cfg["alpha"], sector=sector)
                 rows.append({**base, "arm": f"{sector}_ridge", "nfev": 0,
-                             "seconds": 0.0, **score(c, bundle, train, cfg["alpha"])})
+                             "seconds": 0.0, "alpha": cfg["alpha"],
+                             **score(c, bundle, train, cfg["alpha"])})
+
+            pick = min(("full", "odd"), key=lambda sec: cv_error(train, sec, cfg["alpha"], seed))
+            c = ridge_fit(train, cfg["alpha"], sector=pick)
+            rows.append({**base, "arm": "cv_selected", "nfev": 0, "seconds": 0.0,
+                         "alpha": cfg["alpha"], "selected": pick,
+                         **score(c, bundle, train, cfg["alpha"])})
+
+            a_cv = cv_alpha(train, seed)
+            c = ridge_fit(train, a_cv, sector="full")
+            rows.append({**base, "arm": "full_ridge_cv", "nfev": 0, "seconds": 0.0,
+                         "alpha": a_cv, **score(c, bundle, train, a_cv)})
 
             t0 = time.perf_counter()
             c, res = spherical_fit("spherical_odd", train, cfg["alpha"], seed, cfg["maxiter"])
@@ -110,10 +161,12 @@ def run(target: str, n_layers: int, sigmas, seeds, cfg: dict) -> pd.DataFrame:
                          "seconds": m.seconds,
                          **score(m.coefficients, bundle, train, cfg["alpha"])})
 
-            eq = rows[-1]["nested_rmse"]; fr = rows[-4]["nested_rmse"]
-            print(f"sigma={rel:g} seed={seed:2d}: full {fr:.3e}  "
-                  f"odd {rows[-3]['nested_rmse']:.3e}  null {rows[-2]['nested_rmse']:.3e}  "
-                  f"quantum {eq:.3e}  ({m.seconds:.0f}s)")
+            by_arm = {r["arm"]: r["nested_rmse"] for r in rows[-6:]}
+            print(f"sigma={rel:g} seed={seed:2d}: full {by_arm['full_ridge']:.3e}  "
+                  f"full-cv {by_arm['full_ridge_cv']:.3e}  selected {by_arm['cv_selected']:.3e}  "
+                  f"odd {by_arm['odd_ridge']:.3e}  "
+                  f"null {by_arm['spherical_odd']:.3e}  quantum {by_arm['equivariant']:.3e}  "
+                  f"({m.seconds:.0f}s)")
     return pd.DataFrame(rows)
 
 
@@ -207,6 +260,7 @@ def main() -> None:
     med = frame.pivot_table(index="sigma_rel", columns="arm",
                             values="nested_rmse", aggfunc="median")
     med["naive_ratio"] = med.equivariant / med.full_ridge
+    med["vs_tuned_full"] = med.equivariant / med.full_ridge_cv
     med["vs_prior"] = med.equivariant / med.odd_ridge
     med["vs_null"] = med.equivariant / med.spherical_odd
     with pd.option_context("display.float_format", lambda v: f"{v:.3e}",

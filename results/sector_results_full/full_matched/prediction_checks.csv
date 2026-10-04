@@ -1,7 +1,7 @@
 prediction,status,detail
 P1_equivariant_raw_even_zero,PASS,"max raw even expectation=0.000e+00 (all inits, n=180)"
 P2a_odd_methods_above_odd_ols_rmse,PASS,"0 bound violations over 360 rows (equivariant=180, spherical_odd=180); ceiling inconsistencies=0; minimum signed slack=2.218e-13; minimum slack/tolerance=1.887e-03; maximum violation=0.000e+00; maximum repeated-ceiling spread=0.000e+00; closest row=(double_sawtooth/equivariant/L=3/seed=13, slack=2.218e-13, tol=1.175e-10); rtol=1.0e-09, atol=1.0e-16"
-P2b_odd_methods_above_odd_ridge_objective,PASS,"0 bound violations over 360 rows (equivariant=180, spherical_odd=180); ceiling inconsistencies=0; minimum signed slack=1.719e-15; minimum slack/tolerance=1.244e-04; maximum violation=0.000e+00; maximum repeated-ceiling spread=0.000e+00; closest row=(double_sawtooth/spherical_odd/L=1/seed=19, slack=1.719e-15, tol=1.382e-11); rtol=1.0e-09, atol=1.0e-20"
+P2b_odd_methods_above_odd_ridge_objective,PASS,"0 bound violations over 360 rows (equivariant=180, spherical_odd=180); ceiling inconsistencies=0; minimum signed slack=1.801e-15; minimum slack/tolerance=1.303e-04; maximum violation=0.000e+00; maximum repeated-ceiling spread=0.000e+00; closest row=(double_sawtooth/spherical_odd/L=1/seed=19, slack=1.801e-15, tol=1.382e-11); rtol=1.0e-09, atol=1.0e-20"
 P3a_rank_within_sector_bound,PASS,0 cells exceed bound
 P3b_equivariant_rank_exactly_8,PASS,"rank ranges [(8, 8), (8, 8), (8, 8)]; min sigma8/sigma1=4.894e-05, median sigma8/sigma9 gap=1.300e+15"
 P5_sector_dose_response,PASS,"triangle odd-prior free=True, double_sawtooth odd-prior total=True"
@@ -9,4 +9,11 @@ P4a_rms_vs_variance_model,PASS,"median cellwise RMS/predicted ||dc||=0.991; 10-9
 P4a_naive_counting_ratio,INFO,median generic/equivariant ||dc||=0.30 (1.73 expected ONLY at W=I with comparable scales)
 P4b_mean_mse_degradation_ratio,INFO,median of cellwise mean-degradation ratios=0.33 over 9 cells (regime-dependent; see P4c)
 P4c_mse_degradation_exponent,INFO,"median log-log slope of mean MSE degradation=-1.00 over 27 fits (-1 second order, -0.5 first order dominates)"
-P6_preconditioning,INFO,preconditioner: per-target defaults
+P6_preconditioning,INFO,"preconditioner: decay-matched (k^-2 triangle, k^-1 sawtooths)"
+P7_stopping_threshold_scale_triangle_odd,FAIL,models: equivariant; effective ftol threshold 1.00e-12 is 2.90e-01 of the data-fit term and 2.45e-03 of the objective at the odd-sector ridge optimum (limit 1e-05)
+P7_stopping_threshold_scale_triangle_full,FAIL,"models: generic, sector_mixed; effective ftol threshold 1.00e-12 is 5.05e-01 of the data-fit term and 2.45e-03 of the objective at the full-sector ridge optimum (limit 1e-05)"
+P7_stopping_threshold_scale_sawtooth_odd,PASS,models: equivariant; effective ftol threshold 1.00e-12 is 7.03e-11 of the data-fit term and 7.03e-11 of the objective at the odd-sector ridge optimum (limit 1e-05)
+P7_stopping_threshold_scale_sawtooth_full,FAIL,"models: generic, sector_mixed; effective ftol threshold 1.00e-12 is 1.84e-04 of the data-fit term and 1.47e-04 of the objective at the full-sector ridge optimum (limit 1e-05)"
+P7_stopping_threshold_scale_double_sawtooth_odd,PASS,models: equivariant; effective ftol threshold 1.00e-12 is 7.24e-11 of the data-fit term and 7.24e-11 of the objective at the odd-sector ridge optimum (limit 1e-05)
+P7_stopping_threshold_scale_double_sawtooth_full,FAIL,"models: generic, sector_mixed; effective ftol threshold 1.00e-12 is 2.55e-04 of the data-fit term and 2.37e-04 of the objective at the full-sector ridge optimum (limit 1e-05)"
+P8_mask_half_period_invariance,FAIL,"excluded points [0.25, 0.5, 0.75] shift to [0.0, 0.25, 0.75]; training-grid least-squares RMSE by sector: triangle: odd 1.848e-06, full 1.383e-06, price 4.645e-07; sawtooth: odd 1.193e-01, full 7.377e-05, price 1.192e-01; double_sawtooth: odd 1.175e-01, full 6.262e-05, price 1.175e-01"

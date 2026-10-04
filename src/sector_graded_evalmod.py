@@ -752,6 +752,86 @@ def partial_product_warm_start_params(n_layers: int, seed: int,
     return np.concatenate([p, log_scales])
 
 
+STOPPING_SCALE_LIMIT = 1e-5  # recalibrated from 1e-3 after the generic-sawtooth check
+
+
+def stopping_scale(cache: GridCache, alpha: float, options: dict | None = None,
+                   sector: str = "odd") -> dict:
+    """Effective L-BFGS-B stopping threshold against the scale of the objective.
+
+    L-BFGS-B stops when (f_k - f_{k+1}) / max(|f_k|, |f_{k+1}|, 1) <= ftol, so
+    for an objective below one the threshold is absolute. The threshold is
+    compared with the objective and its data-fit term at the sector ridge
+    optimum.
+    """
+    options = OPTIONS if options is None else options
+    c = ridge_fit(cache, alpha, sector)
+    fit = float(np.mean((cache.design_masked @ c - cache.target_masked) ** 2))
+    f_ref = regularized_loss(c, cache, alpha)
+    threshold = options["ftol"] * max(1.0, abs(f_ref))
+    return {"f_ref": f_ref, "fit_term": fit, "threshold": threshold,
+            "threshold_over_objective": threshold / f_ref,
+            "threshold_over_fit": threshold / fit}
+
+
+def validate_stopping_scale(cache: GridCache, alpha: float, options: dict | None = None,
+                            sector: str = "odd", limit: float = STOPPING_SCALE_LIMIT) -> None:
+    """The stopping threshold must be far below the data-fit term at the optimum."""
+    r = stopping_scale(cache, alpha, options, sector)
+    assert r["threshold_over_fit"] <= limit, ("stopping threshold too coarse", r)
+
+
+MODEL_SECTOR = {"equivariant": "odd", "generic": "full", "sector_mixed": "full"}
+
+
+def mask_shift_checks(bundles: Mapping[str, "DatasetBundle"]) -> pd.DataFrame:
+    """Is the excluded set invariant under the half-period shift x -> x + 1/2?
+
+    The grading is a symmetry of the fitting problem only if the mask is. If it
+    is not, an anti-periodic target can still be fitted better outside the odd
+    sector, and the price of the prior is nonzero; the detail reports that
+    price on the training grid, as in the decomposition of the gap.
+    """
+    shifted = np.sort((SINGULAR_POINTS + 0.5) % 1.0)
+    invariant = np.allclose(shifted, np.sort(SINGULAR_POINTS))
+    prices = []
+    for target, bundle in bundles.items():
+        odd, _ = masked_rmse_linf(ridge_fit(bundle.train, 0.0, "odd"), bundle.train)
+        full, _ = masked_rmse_linf(ridge_fit(bundle.train, 0.0, "full"), bundle.train)
+        prices.append(f"{target}: odd {odd:.3e}, full {full:.3e}, price {odd - full:.3e}")
+    return pd.DataFrame([{
+        "prediction": "P8_mask_half_period_invariance",
+        "status": "PASS" if invariant else "FAIL",
+        "detail": (f"excluded points {np.sort(SINGULAR_POINTS).tolist()} shift to "
+                   f"{shifted.tolist()}; training-grid least-squares RMSE by sector: "
+                   + "; ".join(prices)),
+    }])
+
+
+def stopping_scale_checks(bundles: Mapping[str, "DatasetBundle"], alpha: float,
+                          options: dict | None = None) -> pd.DataFrame:
+    """Record the stopping-threshold check as PASS or FAIL for every target and
+    every coefficient sector a model family occupies: odd for the equivariant
+    family, full for the generic and sector-mixed families."""
+    rows = []
+    sectors = {}
+    for kind, sector in MODEL_SECTOR.items():
+        sectors.setdefault(sector, []).append(kind)
+    for target, bundle in bundles.items():
+        for sector, kinds in sectors.items():
+            r = stopping_scale(bundle.train, alpha, options, sector)
+            rows.append({
+                "prediction": f"P7_stopping_threshold_scale_{target}_{sector}",
+                "status": "PASS" if r["threshold_over_fit"] <= STOPPING_SCALE_LIMIT else "FAIL",
+                "detail": (f"models: {', '.join(kinds)}; effective ftol threshold "
+                           f"{r['threshold']:.2e} is {r['threshold_over_fit']:.2e} of the "
+                           f"data-fit term and {r['threshold_over_objective']:.2e} of the "
+                           f"objective at the {sector}-sector ridge optimum "
+                           f"(limit {STOPPING_SCALE_LIMIT:g})"),
+            })
+    return pd.DataFrame(rows)
+
+
 def validate_partial_warm_start_mapping() -> None:
     """Guard the intended three-moment product-state mapping."""
     theta = np.array([0.4, 1.1, 2.0])
@@ -956,7 +1036,6 @@ def _raw_coefficients(params: np.ndarray, kind: str, n_layers: int,
     expectations vanish (P1), so the measured ranks are unchanged; for a
     symmetry-breaking bug they do not, and the bound is then genuinely tested.
     """
-    nc = n_circuit_params(n_layers)
     _, raw, _, _, log_scales = evaluate_model(params, kind, n_layers, weights)
     return decode(raw, log_scales, weights)
 
@@ -1505,10 +1584,16 @@ def check_predictions(
 def recompute_prediction_checks(
     result: Mapping[str, pd.DataFrame],
     *,
+    alpha: float,
+    delta: float,
     decay_note: str = "",
     output_path: str | None = None,
 ) -> pd.DataFrame:
-    """Recompute checks from existing frames without retraining or resampling."""
+    """Recompute checks from existing frames without retraining or resampling.
+
+    alpha and delta are those of the run, and are needed for the
+    stopping-threshold check.
+    """
     required = {"exact", "ranks", "shot"}
     missing = required - set(result)
     if missing:
@@ -1517,6 +1602,9 @@ def recompute_prediction_checks(
         result["exact"], result["ranks"], result["shot"],
         decay_note=decay_note,
     )
+    bundles = build_bundles(delta)
+    checks = pd.concat([checks, stopping_scale_checks(bundles, alpha),
+                        mask_shift_checks(bundles)], ignore_index=True)
     if output_path is not None:
         safe_write_csv(checks, output_path)
     return checks
@@ -1646,6 +1734,10 @@ def run_sector_study(*, layer_values=(1, 2, 3), seeds=tuple(range(20)),
     validate_partial_warm_start_mapping()
 
     bundles = build_bundles(delta)
+    scale_checks = pd.concat([stopping_scale_checks(bundles, alpha),
+                              mask_shift_checks(bundles)], ignore_index=True)
+    for _, row in scale_checks[scale_checks.status == "FAIL"].iterrows():
+        print(f"warning: {row.prediction}: {row.detail}")
 
     def weights_for(target: str) -> np.ndarray:
         p = DEFAULT_DECAY_P[target] if decay_p is None else float(decay_p)
@@ -1850,6 +1942,7 @@ def run_sector_study(*, layer_values=(1, 2, 3), seeds=tuple(range(20)),
     decay_note = "per-target defaults" if decay_p is None else f"decay_p={decay_p}"
     checks = check_predictions(exact_frame, ranks, shot_frame,
                                decay_note=f"preconditioner: {decay_note}")
+    checks = pd.concat([checks, scale_checks], ignore_index=True)
     output_paths["checks"] = safe_write_csv(
         checks, os.path.join(output_dir, "prediction_checks.csv"))
 

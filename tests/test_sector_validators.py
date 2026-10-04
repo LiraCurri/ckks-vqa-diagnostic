@@ -56,9 +56,9 @@ def test_measurement_basis_rotation_recovers_exact_expectations() -> None:
         assert np.allclose(measured, exact[list(rows_tuple)], atol=1e-12, rtol=1e-12)
 
 def test_jacobian_rank_study_runs_and_saturates() -> None:
-    """Smoke test of jacobian_rank_study. It differentiates the projected
-    output, so its rank bound holds by construction; the bound itself is tested
-    in test_equivariant_rank_bound_from_circuit_not_projection."""
+    """Smoke test of jacobian_rank_study, which differentiates the raw
+    coefficients; test_equivariant_rank_bound_from_circuit_not_projection
+    checks the bound directly over several depths and points."""
     ranks = study.jacobian_rank_study(layer_values=(1,), weights=np.ones(study.N_HARMONICS),
         n_points=2, eps=1e-6, rank_rtol=1e-8, seed=17)
     eq = ranks[ranks["kind"] == "equivariant"]
@@ -72,7 +72,6 @@ def _raw_coefficient_jacobian(p, kind, L, weights, eps=1e-6):
     decoding, which makes any rank computed from its coefficients <= 8 by
     construction. Differentiating the raw decode tests the circuit instead.
     """
-    nc = study.n_circuit_params(L)
     def f(q):
         _, raw, _, _, s = study.evaluate_model(q, kind, L, weights)
         return study.decode(raw, s, weights)

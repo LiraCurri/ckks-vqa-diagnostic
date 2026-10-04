@@ -46,16 +46,33 @@ import topology_aware_evalmod_experiments_v3 as base
 N_QUBITS = 4
 DIM = 2 ** N_QUBITS
 
+# Circuit matchings. The mirror circuit is the image of the nearest circuit
+# under the relabelling sigma: i -> i + 1 (mod 4), with the same pair order and
+# orientation, and it is read in the sigma-frame: through the sigma-images of
+# the canonical decoders (decoder_spec). Every cell (nearest circuit, decoder a)
+# is then the same optimisation problem as (mirror circuit, decoder sigma(a)),
+# up to a permutation of the circuit parameters (Proposition 1; checked by
+# validate_relabelling_equivalence).
 PAIR_TOPOLOGIES: Dict[str, Tuple[Tuple[int, int], ...]] = {
     "nearest": ((0, 1), (2, 3)),
-    "mirror": ((0, 3), (1, 2)),
+    "mirror": ((1, 2), (3, 0)),
     "crossed": ((0, 2), (1, 3)),
 }
 BRIDGE_EDGES: Dict[str, Tuple[int, int]] = {
     "nearest": (1, 2),
-    "mirror": (0, 1),
+    "mirror": (2, 3),
     "crossed": (0, 1),
 }
+# Canonical decoder matchings, used by the nearest and crossed circuits.
+DECODER_PAIRS: Dict[str, Tuple[Tuple[int, int], ...]] = {
+    "nearest": ((0, 1), (2, 3)),
+    "mirror": ((0, 3), (1, 2)),
+    "crossed": ((0, 2), (1, 3)),
+}
+# sigma maps the nearest and mirror matchings to each other and fixes the crossed one.
+SIGMA_ALIGNMENT = {"nearest": "mirror", "mirror": "nearest", "crossed": "crossed"}
+CIRCUIT_FRAME = {"nearest": 0, "mirror": 1, "crossed": 0}
+USE_SIGMA_FRAME = True
 PHASE_RULES = ("uniform", "oriented")
 DECODER_ALIGNMENTS = tuple(PAIR_TOPOLOGIES)
 CIRCUIT_METHODS = tuple(
@@ -75,22 +92,32 @@ def pauli_string(assignments: Mapping[int, str]) -> str:
     return "".join(symbols)
 
 
+def relabel_observable(observable: str, shift: int = 1) -> str:
+    """Apply sigma^shift, i -> i + shift (mod 4), to a Pauli string."""
+    out = ["I"] * N_QUBITS
+    for q, symbol in enumerate(observable):
+        out[(q + shift) % N_QUBITS] = symbol
+    return "".join(out)
+
+
 def decoder_observable_families(alignment: str) -> Dict[str, Tuple[str, ...]]:
-    if alignment not in PAIR_TOPOLOGIES:
+    """Canonical decoder families for an alignment."""
+    if alignment not in DECODER_PAIRS:
         raise ValueError(f"Unknown decoder alignment: {alignment}")
-    pairs = PAIR_TOPOLOGIES[alignment]
+    pairs = DECODER_PAIRS[alignment]
+    fixed = dict(FIXED_OBSERVABLE_FAMILIES)
     same_axis: List[str] = []
     mixed_axis: List[str] = []
     for q1, q2 in pairs:
         same_axis += [pauli_string({q1: "X", q2: "X"}), pauli_string({q1: "Y", q2: "Y"})]
         mixed_axis += [pauli_string({q1: "X", q2: "Y"}), pauli_string({q1: "Y", q2: "X"})]
-    return {**FIXED_OBSERVABLE_FAMILIES, "aligned_same_axis": tuple(same_axis),
+    return {**fixed, "aligned_same_axis": tuple(same_axis),
             "aligned_mixed_axis": tuple(mixed_axis)}
 
 
 def measurement_groups(alignment: str) -> Dict[str, Tuple[str, ...]]:
     families = decoder_observable_families(alignment)
-    pairs = PAIR_TOPOLOGIES[alignment]
+    pairs = DECODER_PAIRS[alignment]
     mixed_a = ["I"] * N_QUBITS
     mixed_b = ["I"] * N_QUBITS
     for q1, q2 in pairs:
@@ -150,14 +177,24 @@ class DecoderSpec:
     basis_sign_tables: Tuple[np.ndarray, ...]
 
 
-def _build_spec(alignment: str) -> DecoderSpec:
-    families = decoder_observable_families(alignment)
+def _build_spec(alignment: str, frame: int = 0) -> DecoderSpec:
+    """Decoder for an alignment, in the canonical frame (0) or the sigma-frame (1).
+
+    In the sigma-frame the decoder for alignment a is the sigma-image of the
+    canonical decoder for sigma(a): every observable and every measurement basis
+    is relabelled, and the slot order is preserved."""
+    source = SIGMA_ALIGNMENT[alignment] if frame else alignment
+    families = decoder_observable_families(source)
+    groups = measurement_groups(source)
+    if frame:
+        families = {fam: tuple(relabel_observable(o) for o in obs) for fam, obs in families.items()}
+        groups = {relabel_observable(b): tuple(relabel_observable(o) for o in g) for b, g in groups.items()}
     observables = tuple(o for fam in FAMILY_NAMES for o in families[fam])
     family_index = np.array([i for i, fam in enumerate(FAMILY_NAMES) for _ in families[fam]], dtype=int)
     operators = np.stack([pauli_operator(o) for o in observables], axis=0)
     position = {o: i for i, o in enumerate(observables)}
     bases, index_arrays, sign_tables = [], [], []
-    for basis, group in measurement_groups(alignment).items():
+    for basis, group in groups.items():
         bases.append(basis)
         index_arrays.append(np.array([position[o] for o in group], dtype=int))
         sign_tables.append(_sign_table(group))
@@ -168,6 +205,14 @@ def _build_spec(alignment: str) -> DecoderSpec:
 
 
 DECODER_SPECS: Dict[str, DecoderSpec] = {a: _build_spec(a) for a in DECODER_ALIGNMENTS}
+DECODER_SPECS_SIGMA: Dict[str, DecoderSpec] = {a: _build_spec(a, frame=1) for a in DECODER_ALIGNMENTS}
+
+
+def decoder_spec(alignment: str, topology: str) -> DecoderSpec:
+    """The decoder a circuit of the given topology reads for an alignment."""
+    if USE_SIGMA_FRAME and CIRCUIT_FRAME[topology] == 1:
+        return DECODER_SPECS_SIGMA[alignment]
+    return DECODER_SPECS[alignment]
 
 
 def validate_factorial_design(degree: int, n_qubits: int) -> None:
@@ -175,7 +220,11 @@ def validate_factorial_design(degree: int, n_qubits: int) -> None:
         raise ValueError("This study is defined for exactly four qubits.")
     base.validate_model_size(degree, n_qubits)
     expected = len(base.odd_degrees(degree))
-    for alignment, spec in DECODER_SPECS.items():
+    for alignment in DECODER_ALIGNMENTS:
+        if not np.array_equal(DECODER_SPECS[alignment].family_index,
+                              DECODER_SPECS_SIGMA[alignment].family_index):
+            raise ValueError(f"{alignment}: decoder families differ between frames.")
+    for alignment, spec in [*DECODER_SPECS.items(), *DECODER_SPECS_SIGMA.items()]:
         if len(spec.observables) != expected:
             raise ValueError(f"{alignment}: {len(spec.observables)} observables, expected {expected}.")
         grouped = [spec.observables[i] for idx in spec.basis_observable_indices for i in idx]
@@ -190,8 +239,45 @@ def validate_factorial_design(degree: int, n_qubits: int) -> None:
                         raise ValueError(f"{spec.observables[i]} not measurable in basis {basis}.")
 
 
-def exact_expectation_vector(state: np.ndarray, alignment: str) -> np.ndarray:
-    operators = DECODER_SPECS[alignment].operators
+def relabel_circuit_params(circuit_params: np.ndarray, n_layers: int) -> np.ndarray:
+    """Parameters of the mirror circuit equivalent to nearest-circuit parameters:
+    each single-qubit R_y block is permuted by sigma; the pair angles keep their order."""
+    out = np.array(circuit_params, dtype=float).copy()
+    index = 0
+    for _ in range(n_layers):
+        block = circuit_params[index:index + N_QUBITS]
+        out[index:index + N_QUBITS] = [block[(q - 1) % N_QUBITS] for q in range(N_QUBITS)]
+        index += N_QUBITS + len(PAIR_TOPOLOGIES["nearest"])
+    block = circuit_params[index:index + N_QUBITS]
+    out[index:index + N_QUBITS] = [block[(q - 1) % N_QUBITS] for q in range(N_QUBITS)]
+    return out
+
+
+def validate_relabelling_equivalence(layer_values=(1, 2, 3), trials: int = 3,
+                                     seed: int = 2024, atol: float = 1e-10) -> None:
+    """Proposition 1 as implemented: for every alignment a, the cells (nearest
+    circuit, decoder a) and (mirror circuit, decoder sigma(a)) give the same
+    ordered expectation vector, and hence the same coefficients, under the
+    relabelling of the circuit parameters."""
+    rng = np.random.default_rng(seed)
+    for n_layers in layer_values:
+        for rule in PHASE_RULES:
+            for use_bridge in (False, True):
+                for _ in range(trials):
+                    theta = rng.uniform(-np.pi, np.pi, n_circuit_params(n_layers))
+                    state_n = run_factorial_ansatz(theta, f"nearest_{rule}", n_layers, use_bridge)
+                    state_m = run_factorial_ansatz(relabel_circuit_params(theta, n_layers),
+                                                   f"mirror_{rule}", n_layers, use_bridge)
+                    for alignment in DECODER_ALIGNMENTS:
+                        near = exact_expectation_vector(state_n, alignment, "nearest")
+                        mirr = exact_expectation_vector(state_m, SIGMA_ALIGNMENT[alignment], "mirror")
+                        err = float(np.max(np.abs(near - mirr)))
+                        assert err <= atol, ("relabelling equivalence fails", n_layers, rule,
+                                             use_bridge, alignment, err)
+
+
+def exact_expectation_vector(state: np.ndarray, alignment: str, topology: str) -> np.ndarray:
+    operators = decoder_spec(alignment, topology).operators
     values = np.einsum("i,kij,j->k", state.conj(), operators, state, optimize=True)
     if np.max(np.abs(values.imag)) > 1e-8:
         raise FloatingPointError("Pauli expectations have imaginary component.")
@@ -390,16 +476,17 @@ def unpack_model_params(params, cfg):
     return np.asarray(params[:n_circuit], dtype=float), np.asarray(params[n_circuit:], dtype=float)
 
 
-def expectations_to_coefficients(expectations, log_scales, alignment):
-    spec = DECODER_SPECS[alignment]
+def expectations_to_coefficients(expectations, log_scales, alignment, topology):
+    spec = decoder_spec(alignment, topology)
     return np.exp(log_scales)[spec.family_index] * expectations
 
 
 def evaluate_model(params, *, method, decoder_alignment, cfg, use_bridge):
     circuit_params, log_scales = unpack_model_params(params, cfg)
     state = run_factorial_ansatz(circuit_params, method, cfg.n_layers, use_bridge)
-    expectations = exact_expectation_vector(state, decoder_alignment)
-    coefficients = expectations_to_coefficients(expectations, log_scales, decoder_alignment)
+    expectations = exact_expectation_vector(state, decoder_alignment, parse_method(method)[0])
+    coefficients = expectations_to_coefficients(expectations, log_scales, decoder_alignment,
+                                                parse_method(method)[0])
     return state, expectations, coefficients, log_scales
 
 
@@ -704,7 +791,8 @@ def run_factorial_study(*, q0_values=(8, 16), layer_values=(1, 2, 3), seeds=tupl
                         shots_per_basis_values=(100, 500, 1000, 5000), shot_repetitions=30,
                         shot_random_seed=987654, use_bridge=False, maxfun=None,
                         output_dir=os.path.join("results", "evalmod_factorial_observable_study")):
-    """maxfun=None reproduces the published run (SciPy default 15,000)."""
+    """The reported run uses maxfun=1,000,000 (--maxfun 1000000); maxfun=None
+    uses SciPy's default cap of 15,000 evaluations."""
     global MAXFUN
     MAXFUN = maxfun
     os.makedirs(output_dir, exist_ok=True)
@@ -715,6 +803,7 @@ def run_factorial_study(*, q0_values=(8, 16), layer_values=(1, 2, 3), seeds=tupl
                                success_tolerance=1e-4, reference_method="direct_log_monomial",
                                output_dir=output_dir)
     validate_factorial_design(template_cfg.degree, template_cfg.n_qubits)
+    validate_relabelling_equivalence(layer_values=tuple(layer_values))
     bundles = build_dataset_bundles(template_cfg)
     reference_cache = build_reference_cache(template_cfg, bundles)
     exact_rows, shot_rows, parameter_store = [], [], {}
@@ -726,7 +815,7 @@ def run_factorial_study(*, q0_values=(8, 16), layer_values=(1, 2, 3), seeds=tupl
                                                       reference_cache=reference_cache))
             for method in CIRCUIT_METHODS:
                 for decoder_alignment in DECODER_ALIGNMENTS:
-                    spec = DECODER_SPECS[decoder_alignment]
+                    spec = decoder_spec(decoder_alignment, parse_method(method)[0])
                     for seed in seeds:
                         model = train_model(q0=q0, method=method, decoder_alignment=decoder_alignment,
                                             seed=int(seed), cache=bundle.train_cache, cfg=layer_cfg,
@@ -742,7 +831,8 @@ def run_factorial_study(*, q0_values=(8, 16), layer_values=(1, 2, 3), seeds=tupl
                                     cumulatives=cumulatives, spec=spec, q0=q0, n_layers=int(n_layers),
                                     training_seed=int(seed), shots_per_basis=int(shots_per_basis),
                                     repetition=repetition, random_seed=shot_random_seed)
-                                coefficients = expectations_to_coefficients(sampled, model.log_scales, decoder_alignment)
+                                coefficients = expectations_to_coefficients(sampled, model.log_scales,
+                                                                            decoder_alignment, model.topology)
                                 nested_rmse, nested_linf = masked_rmse_linf(coefficients, bundle.nested_cache)
                                 shifted_rmse, shifted_linf = masked_rmse_linf(coefficients, bundle.shifted_cache)
                                 shot_rows.append({
