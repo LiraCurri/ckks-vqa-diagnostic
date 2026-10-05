@@ -1,16 +1,16 @@
 macro,value,tex,source
-DoseTriangleZero,0.1185679148198624,\ensuremath{0.118568},full_p0/exact nested_rmse triangle/zero
-DoseTriangleEven,0.1177861263043996,\ensuremath{0.117786},full_p0/exact nested_rmse triangle/ols_even
-DoseTriangleOdd,2.158905850557928e-06,\ensuremath{0.000002},full_p0/exact nested_rmse triangle/ols_odd
-DoseTriangleFull,1.6545990721022358e-06,\ensuremath{0.000002},full_p0/exact nested_rmse triangle/ols_full
-DoseSawtoothZero,0.2546010785589018,\ensuremath{0.254601},full_p0/exact nested_rmse sawtooth/zero
-DoseSawtoothEven,0.2269547453151418,\ensuremath{0.226955},full_p0/exact nested_rmse sawtooth/ols_even
-DoseSawtoothOdd,0.119608023733016,\ensuremath{0.119608},full_p0/exact nested_rmse sawtooth/ols_odd
-DoseSawtoothFull,8.785943510548279e-05,\ensuremath{0.000088},full_p0/exact nested_rmse sawtooth/ols_full
-DoseDoubleSawtoothZero,0.1185679148198623,\ensuremath{0.118568},full_p0/exact nested_rmse double_sawtooth/zero
-DoseDoubleSawtoothEven,7.847941766820446e-05,\ensuremath{0.000078},full_p0/exact nested_rmse double_sawtooth/ols_even
-DoseDoubleSawtoothOdd,0.1177997608065209,\ensuremath{0.117800},full_p0/exact nested_rmse double_sawtooth/ols_odd
-DoseDoubleSawtoothFull,7.237781801870581e-05,\ensuremath{0.000072},full_p0/exact nested_rmse double_sawtooth/ols_full
+DoseTriangleZero,0.1185679148198624,\ensuremath{1.186\times10^{-1}},full_p0/exact nested_rmse triangle/zero
+DoseTriangleEven,0.1177861263043996,\ensuremath{1.178\times10^{-1}},full_p0/exact nested_rmse triangle/ols_even
+DoseTriangleOdd,2.158905850557928e-06,\ensuremath{2.159\times10^{-6}},full_p0/exact nested_rmse triangle/ols_odd
+DoseTriangleFull,1.6545990721022358e-06,\ensuremath{1.655\times10^{-6}},full_p0/exact nested_rmse triangle/ols_full
+DoseSawtoothZero,0.2546010785589018,\ensuremath{2.546\times10^{-1}},full_p0/exact nested_rmse sawtooth/zero
+DoseSawtoothEven,0.2269547453151418,\ensuremath{2.270\times10^{-1}},full_p0/exact nested_rmse sawtooth/ols_even
+DoseSawtoothOdd,0.119608023733016,\ensuremath{1.196\times10^{-1}},full_p0/exact nested_rmse sawtooth/ols_odd
+DoseSawtoothFull,8.785943510548279e-05,\ensuremath{8.786\times10^{-5}},full_p0/exact nested_rmse sawtooth/ols_full
+DoseDoubleSawtoothZero,0.1185679148198623,\ensuremath{1.186\times10^{-1}},full_p0/exact nested_rmse double_sawtooth/zero
+DoseDoubleSawtoothEven,7.847941766820446e-05,\ensuremath{7.848\times10^{-5}},full_p0/exact nested_rmse double_sawtooth/ols_even
+DoseDoubleSawtoothOdd,0.1177997608065209,\ensuremath{1.178\times10^{-1}},full_p0/exact nested_rmse double_sawtooth/ols_odd
+DoseDoubleSawtoothFull,7.237781801870581e-05,\ensuremath{7.238\times10^{-5}},full_p0/exact nested_rmse double_sawtooth/ols_full
 EvenShareRatio,0.4697860056603993,\ensuremath{0.470},"sawtooth ols_odd/zero, nested"
 EvenSharePct,0.22069889111435273,\ensuremath{22\%},square of EvenShareRatio
 RidgeOddNested,2.2155646363175006e-06,\ensuremath{2.216\times10^{-6}},triangle ridge_odd nested
@@ -28,12 +28,16 @@ NfevPzeroLOne,5465.5,"5{,}466",comparison
 NfevMatchedLOne,2507.5,"2{,}508",comparison
 SectorOptSuccessPzero,0.9981481481481481,\ensuremath{100\%},p0 exact
 SectorOptSuccessMatched,0.9981481481481481,\ensuremath{100\%},matched exact
+PriorTrainOdd,1.847611002288148e-06,\ensuremath{1.848\times10^{-6}},"triangle LS training RMSE, odd sector"
+PriorTrainFull,1.3831246220405298e-06,\ensuremath{1.383\times10^{-6}},"triangle LS training RMSE, full space"
+PriorPriceTri,4.644863802476181e-07,\ensuremath{4.64\times10^{-7}},"price of the prior, triangle, training grid"
+PriorRatioTri,1.3358239545778308,\ensuremath{1.34},"odd/full LS training RMSE, triangle"
 SlackRMSEPzero,4.510003481783542e-13,\ensuremath{4.510\times10^{-13}},P2a
 SlackObjectivePzero,1.8006429680639258e-15,\ensuremath{1.801\times10^{-15}},P2b
-PtwoRowsPzero,360.0,360,rows checked in P2
+PtwoRowsPzero,240.0,240,distinct fits checked in P2 (the null is stored once per depth)
 SlackRMSEMatched,2.2179480474449065e-13,\ensuremath{2.218\times10^{-13}},P2a
 SlackObjectiveMatched,1.8006429680639258e-15,\ensuremath{1.801\times10^{-15}},P2b
-PtwoRowsMatched,360.0,360,rows checked in P2
+PtwoRowsMatched,240.0,240,distinct fits checked in P2 (the null is stored once per depth)
 RawEvenMax,0.0,\ensuremath{0},"P1, worst over both decoders"
 RawEvenMaxPzero,0.0,\ensuremath{0},"P1, this decoder"
 EquivariantModelsPzero,180.0,180,trained equivariant models
@@ -123,51 +127,59 @@ TopoRefKSixteen,0.1573369999716129,\ensuremath{0.1573},direct_log_monomial neste
 TopoZeroKSixteen,0.1825928804323427,\ensuremath{0.1826},zero polynomial nested RMSE
 TopoSuccessFraction,0.0,\ensuremath{0\%},within 1e-4 of reference
 TopoRMSEMin,0.0372961458089201,\ensuremath{0.037},cell medians
-TopoRMSEMax,0.1628731878936158,\ensuremath{0.163},cell medians
+TopoRMSEMax,0.1627907453723375,\ensuremath{0.163},cell medians
 TopoOptSuccessMin,0.9,\ensuremath{90\%},per-cell optimizer success
 TopoOptSuccessMax,1.0,\ensuremath{100\%},per-cell optimizer success
-TopoOptSuccessAll,0.9967592592592592,\ensuremath{100\%},overall optimizer success
-TopoBudgetStopAll,0.0032407407407407406,\ensuremath{0\%},restarts stopped on an optimiser budget
+TopoOptSuccessAll,0.9944444444444445,\ensuremath{99\%},overall optimizer success
+TopoBudgetStopAll,0.005555555555555556,\ensuremath{1\%},restarts stopped on an optimiser budget
 TopoMaxfun,1000000.0,"1{,}000{,}000",function-evaluation cap of the analysed run
-TopoEvalLimitKEightLOne,0.002777777777777778,\ensuremath{0\%},share stopped by iteration/evaluation limit
-TopoEvalLimitKEightLTwo,0.008333333333333333,\ensuremath{1\%},share stopped by iteration/evaluation limit
-TopoEvalLimitKEightLThree,0.005555555555555556,\ensuremath{1\%},share stopped by iteration/evaluation limit
+TopoEvalLimitKEightLOne,0.011111111111111112,\ensuremath{1\%},share stopped by iteration/evaluation limit
+TopoEvalLimitKEightLTwo,0.005555555555555556,\ensuremath{1\%},share stopped by iteration/evaluation limit
+TopoEvalLimitKEightLThree,0.011111111111111112,\ensuremath{1\%},share stopped by iteration/evaluation limit
 TopoEvalLimitKSixteenLOne,0.0,\ensuremath{0\%},share stopped by iteration/evaluation limit
-TopoEvalLimitKSixteenLTwo,0.0,\ensuremath{0\%},share stopped by iteration/evaluation limit
+TopoEvalLimitKSixteenLTwo,0.002777777777777778,\ensuremath{0\%},share stopped by iteration/evaluation limit
 TopoEvalLimitKSixteenLThree,0.002777777777777778,\ensuremath{0\%},share stopped by iteration/evaluation limit
-DecMatchedKEightLOne,0.06782049159265596,\ensuremath{0.0678},
-DecMismatchedKEightLOne,0.055818456550492404,\ensuremath{0.0558},
-DecMatchedKEightDeep,0.039819388520280496,\ensuremath{0.0398},
-DecMismatchedKEightDeep,0.050647132805828596,\ensuremath{0.0506},
-TopoKSixteenCentre,0.15808929940252775,\ensuremath{0.158},"K=16, L>=2 cell medians"
-TopoKSixteenSpread,0.011104844741360361,\ensuremath{1.1\%},relative spread
-TopoRecoveryKSixteen,0.9531553969333464,\ensuremath{0.95},recovery = (zero-model)/(zero-reference)
+DecMatchedKEightLOne,0.07345889177659246,\ensuremath{0.0735},
+DecMismatchedKEightLOne,0.0579948132782403,\ensuremath{0.0580},
+DecMatchedKEightDeep,0.04089694066998015,\ensuremath{0.0409},
+DecMismatchedKEightDeep,0.04952581509667015,\ensuremath{0.0495},
+TopoKSixteenCentre,0.15854341517612647,\ensuremath{0.159},"K=16, L>=2 cell medians"
+TopoKSixteenSpread,0.011073037143707602,\ensuremath{1.1\%},relative spread
+TopoRecoveryKSixteen,0.947009535089953,\ensuremath{0.95},recovery = (zero-model)/(zero-reference)
 TopoContrastsPerMetric,114.0,114,
 TopoPvalues,228.0,228,jointly Holm-adjusted
 TopoNPhase,54.0,54,
 TopoNDecoder,36.0,36,
 TopoNCrossNearest,12.0,12,
 TopoNCrossMirror,12.0,12,
-TopoResolved,45.0,45,p_holm < 0.05
+TopoResolved,32.0,32,p_holm < 0.05
 TopoMinPHolm,0.00043487548828125,\ensuremath{0.000},smallest adjusted p
 TopoMinPRaw,1.9073486328125e-06,\ensuremath{1.9\times10^{-6}},smallest unadjusted p
 TopoAbsDiffMin,2.013744601625511e-09,\ensuremath{2.0\times10^{-9}},median differences
-TopoAbsDiffMax,0.028132229536438458,\ensuremath{2.8\times10^{-2}},median differences
-TopoCIExcludeZero,93.0,93,"pointwise 95% bootstrap CIs excluding 0, whole family (not multiplicity-adjusted)"
-TopoCIExcludeZeroResolved,45.0,45,resolved contrasts whose bootstrap CI excludes 0
-TopoCIExcludeZeroUnresolved,48.0,48,UNresolved contrasts whose pointwise CI excludes 0 (multiplicity illustration)
+TopoAbsDiffMax,0.025096074250311552,\ensuremath{2.5\times10^{-2}},median differences
+TopoCIExcludeZero,91.0,91,"pointwise 95% bootstrap CIs excluding 0, whole family (not multiplicity-adjusted)"
+TopoCIExcludeZeroResolved,32.0,32,resolved contrasts whose bootstrap CI excludes 0
+TopoCIExcludeZeroUnresolved,59.0,59,UNresolved contrasts whose pointwise CI excludes 0 (multiplicity illustration)
 TopoPhaseAbsDiffMax,0.00539132439673725,\ensuremath{0.0054},"largest phase-rule effect, resolved or not"
 TopoResolvedPhase,0.0,0,"resolved contrasts, oriented_minus_uniform"
-TopoResolvedDecoder,25.0,25,"resolved contrasts, matched_minus_mean_mismatched"
-TopoResolvedCrossNearest,10.0,10,"resolved contrasts, crossed_minus_nearest_matched"
-TopoResolvedCrossMirror,10.0,10,"resolved contrasts, crossed_minus_mirror_matched"
-TopoResolvedKEight,39.0,39,resolved contrasts in this carry-range condition
-TopoResolvedKSixteen,6.0,6,resolved contrasts in this carry-range condition
+TopoResolvedDecoder,19.0,19,"resolved contrasts, matched_minus_mean_mismatched"
+TopoResolvedCrossNearest,9.0,9,"resolved contrasts, crossed_minus_nearest_matched"
+TopoResolvedCrossMirror,4.0,4,"resolved contrasts, crossed_minus_mirror_matched"
+TopoResolvedKEight,27.0,27,resolved contrasts in this carry-range condition
+TopoResolvedKSixteen,5.0,5,resolved contrasts in this carry-range condition
 TopoResolvedEffectMin,0.0009222572128916584,\ensuremath{0.0009},resolved effects
-TopoResolvedEffectMax,0.028132229536438458,\ensuremath{0.0281},resolved effects
-TopoCrossEffectMin,0.01015756691654705,\ensuremath{0.0102},resolved crossed contrasts
-TopoCrossEffectMax,0.028132229536438458,\ensuremath{0.0281},resolved crossed contrasts
+TopoResolvedEffectMax,0.025096074250311552,\ensuremath{0.0251},resolved effects
+TopoCrossEffectMin,0.011780079239990849,\ensuremath{0.0118},resolved crossed contrasts
+TopoCrossEffectMax,0.018404762211026198,\ensuremath{0.0184},resolved crossed contrasts
 TopoCrossSameSign,1.0,yes,all resolved crossed contrasts share a sign
+TopoRelabelChecks,36.0,36,nearest cells vs their sigma-images in the mirror block (implementation check)
+TopoRelabelResolved,1.0,1,distributional check: a resolved contrast is followed up by the exact check in the next cell
+TopoCrossSignAgree,0.8333333333333334,\ensuremath{83\%},crossed-vs-nearest and crossed-vs-mirror median differences with the same sign
+TopoRelabelExactRuns,720.0,720,saved nearest solutions evaluated in their sigma-image cells
+TopoRelabelExactWorst,1.7892354264859023e-12,\ensuremath{2\times10^{-12}},"worst relative nested-RMSE difference, relabelled solution vs original"
+TopoRelabelMinPHolm,0.03659820556640625,\ensuremath{0.04},smallest within-family adjusted p of the distributional check
+TopoLimitFrac,0.005555555555555556,\ensuremath{0.6\%},circuit runs stopped on a limit
+TopoLimitFracMax,0.011111111111111112,\ensuremath{1.1\%},"largest per-(K, L) share stopped on a limit"
 MmFeasDefault,0.1,\ensuremath{10\%},"Mamedaliev F, p0 L=3, ftol=1e-12"
 MmFeasDefaultLo,0.02786648096169142,\ensuremath{3\%},"Wilson lower on F, p0 L=3, ftol=1e-12"
 MmFeasDefaultHi,0.3010336471864123,\ensuremath{30\%},"Wilson upper on F, p0 L=3, ftol=1e-12"
@@ -193,11 +205,14 @@ ThomosRatio,3.9748646814551027,3.97,ratio of the two medians
 ThomosCobylaCeiling,0.0,\ensuremath{0\%},COBYLA restarts reaching the sector optimum
 ThomosSpsaCeiling,0.0,\ensuremath{0\%},SPSA restarts reaching the sector optimum
 ThomosCobylaBudgetStop,1.0,\ensuremath{100\%},COBYLA runs stopped by the evaluation budget
-SchreiberCells,18.0,18,cells in the surrogate comparison
+SchreiberCells,3.0,3,targets in the surrogate comparison (null is depth- and decoder-independent)
 SchreiberShortCells,0.0,0,cells where the surrogate falls short of the ridge optimum
 SchreiberGapLOne,88.72554044626347,\ensuremath{89},"quantum/surrogate median nested RMSE, triangle, unweighted, L=1"
 SchreiberGapLTwo,57.897650529777096,\ensuremath{58},"quantum/surrogate median nested RMSE, triangle, unweighted, L=2"
 SchreiberGapLThree,21.015249759278657,\ensuremath{21},"quantum/surrogate median nested RMSE, triangle, unweighted, L=3"
+SchreiberAtOptTri,0.85,\ensuremath{85\%},"null restarts at the ridge optimum, triangle"
+SchreiberAtOptSaw,0.95,\ensuremath{95\%},"null restarts at the ridge optimum, sawtooth"
+SchreiberAtOptDbl,0.9,\ensuremath{90\%},"null restarts at the ridge optimum, double_sawtooth"
 NoisySeeds,20.0,20,noise realisations per level
 NoisyTrainPoints,163.0,163,masked training points
 NoisyNaiveLow,9.47417500866188,\ensuremath{9},"quantum/full, sigma_rel=1e-4, study tolerance"
@@ -224,3 +239,83 @@ NoisyObsOdd,0.00026378829994075,\ensuremath{2.64\times10^{-4}},"observed odd, 1%
 NoisyBeatsPriorTotal,16.0,16,"runs beating the odd optimum by >1% on clean data, sigma_rel >= 1e-2, both tolerances"
 NoisyBeatsPriorShortTotal,16.0,16,"of those, runs whose noisy training objective is above the optimum"
 NoisyNaiveWins,20.0,20,"realisations where quantum beats the full fit, sigma_rel=1e-2, study tolerance"
+ObjRef,4.0876229584262974e-10,\ensuremath{4.09\times10^{-10}},objective at the odd-sector ridge optimum
+ObjFitTerm,3.4511328720562978e-12,\ensuremath{3.45\times10^{-12}},data-fit term at the optimum
+ObjRidgeShare,0.9915571154503326,\ensuremath{99.2\%},ridge share of the objective
+FtolOfObjective,0.002446409588581507,\ensuremath{2.4\times10^{-3}},study ftol as a fraction of the objective
+FtolOfFitTerm,0.2897599243706219,\ensuremath{29\%},study ftol as a fraction of the fit term
+NormStudyNested,4.793549346496628e-05,\ensuremath{4.794\times10^{-5}},"median nested, study settings"
+NormNested,2.3476340840749456e-06,\ensuremath{2.348\times10^{-6}},"median nested, normalised stopping test"
+NormReachedStudy,0.1,\ensuremath{10\%},"restarts within 10% of the reference, study settings"
+NormReached,0.6,\ensuremath{60\%},"restarts within 10% of the reference, normalised"
+NormP,1.9073486328125e-06,\ensuremath{1.9\times10^{-6}},Wilcoxon p
+NoisyTunedHigh,0.6970699666995896,\ensuremath{0.70},"quantum/CV-tuned full ridge, 1% noise"
+NoisyTunedHighP,1.9073486328125e-06,\ensuremath{1.9\times10^{-6}},Wilcoxon p
+NormSweepIdentical,18.0,18,seeds where normalised = 1e-18 sweep
+NormSweepSeeds,20.0,20,seeds compared
+NormSweepWithinPct,20.0,20,seeds within 1% of the 1e-18 sweep
+NormSweepWorst,0.000334727659834555,\ensuremath{3.3\times10^{-4}},largest relative difference from the sweep
+NoisySelectOdd,20.0,20,"realisations where CV selects the odd sector, 1% noise"
+NoisySelectedHigh,1.001567918453679,\ensuremath{1.002},"quantum/CV-selected fit, 1% noise"
+NoisySelectedHighP,0.8408222198486328,\ensuremath{0.841},Wilcoxon p
+NoisyTuningEffect,0.9999589989560711,\ensuremath{1.00},"tuned/untuned full ridge, 1% noise"
+NoisySelectOddZero,6.0,6,"CV selects odd sector, sigma_rel=0"
+NoisySelectOddLo,20.0,20,"CV selects odd sector, sigma_rel=0.0001"
+NoisySelectOddMid,20.0,20,"CV selects odd sector, sigma_rel=0.001"
+NoisySelectOddHigh,20.0,20,"CV selects odd sector, sigma_rel=0.01"
+NoisySelectOddTop,20.0,20,"CV selects odd sector, sigma_rel=0.03"
+NormStoppedMaxiter,0.0,\ensuremath{0\%},normalised runs stopped by an iteration or evaluation limit
+GenRefNested,8.787336892844491e-05,\ensuremath{8.79\times10^{-5}},"generic/sawtooth full-sector reference, nested"
+GenStudyNested,0.0002574839584452,\ensuremath{2.57\times10^{-4}},"generic/sawtooth median, study settings"
+GenNormNested,0.00013820680016285003,\ensuremath{1.38\times10^{-4}},"generic/sawtooth median, normalised"
+GenReachedStudy,0.05,\ensuremath{5\%},"generic/sawtooth within 10% of reference, study"
+GenReached,0.3,\ensuremath{30\%},"generic/sawtooth within 10% of reference, normalised"
+GenGapStudy,6.856714175717702,\ensuremath{6.9},"median objective gap / f_ref, study"
+GenGapNorm,1.409273333481398,\ensuremath{1.4},"median objective gap / f_ref, normalised"
+GenStoppedLimit,0.1,\ensuremath{10\%},generic/sawtooth normalised runs stopped by a limit
+GenNeededIter,3.0,3,"generic/sawtooth normalised runs needing over 3,000 iterations"
+NullFullSawReached,0.9,\ensuremath{90\%},"spherical_full restarts within 10% of the full optimum, sawtooth"
+GenDblRefNested,7.238424969305327e-05,\ensuremath{7.24\times10^{-5}},"generic/double sawtooth full-sector reference, nested"
+GenDblStudyNested,0.0001167399581549,\ensuremath{1.17\times10^{-4}},"median, study settings"
+GenDblNormNested,7.817650647558077e-05,\ensuremath{7.82\times10^{-5}},"median, normalised"
+GenDblReachedStudy,0.0,\ensuremath{0\%},"within 10% of reference, study"
+GenDblReached,0.55,\ensuremath{55\%},"within 10% of reference, normalised"
+GenDblFar,2.0,2,normalised runs with objective more than twice the optimum
+GenDblStoppedLimit,0.0,\ensuremath{0\%},generic/double sawtooth normalised runs stopped by a limit
+GenDblNeededIter,1.0,1,generic/double sawtooth normalised runs needing more than the study's iteration cap
+SawFullBits,13.474443250821508,\ensuremath{13.5},-log2 sawtooth ols_full nested
+SawAtOptimum,38.0,38,sawtooth: equivariant runs within 1e-4 of the odd-sector LS optimum
+SawEqRuns,60.0,60,sawtooth: equivariant runs
+DblAtOptimum,48.0,48,double_sawtooth: equivariant runs within 1e-4 of the odd-sector LS optimum
+DblEqRuns,60.0,60,double_sawtooth: equivariant runs
+PlateauSpread,318.0272326395385,318,"max/min nested RMSE over restarts, ftol 1e-12"
+ReachedDriftMax,0.12565380118557612,\ensuremath{13\%},"largest nested-RMSE excess among runs within 1e-12 of the optimum, all tolerances"
+StallCount,8.0,8,runs not reaching the optimum at ftol 1e-18
+StallObjRatio,2.9873320878285305,\ensuremath{3.0},median objective/optimum of those runs (they still stop on ftol)
+StallAllFtolStop,1.0,1,1 if every run at ftol 1e-18 stops on the ftol test
+RestartWithinFactorTwo,17.0,17,seeds whose restart lands within a factor of 2 of the continuous run
+RestartSeeds,20.0,20,seeds in the restart comparison
+InvThresholdShare,0.008646155367720605,\ensuremath{0.9\%},"ftol 1e-18 as a share of the median inverse objective, unweighted L=3"
+NoisyMinRelExcess,4.0109924528670036e-05,\ensuremath{4\times10^{-5}},"smallest relative objective excess among runs beating the prior, noise >= 1%"
+AblIndepCorrect,11.0,11,"independent cases attributed correctly, all components"
+AblIndepTotal,11.0,11,cases with cause fixed by theorem or construction
+AblTheoremTotal,2.0,2,cases fixed by theorem
+AblConstructionTotal,9.0,9,cases fixed by construction
+AblDiagCorrect,3.0,3,diagnosed cases consistent with their diagnosis
+AblDiagTotal,3.0,3,cases diagnosed by component 5
+AblCompoundTotal,4.0,4,"compound cases, reported not scored"
+GenClosedSaw,0.5787639198091942,\ensuremath{58\%},"share of log gap closed by normalising, generic sawtooth"
+GenClosedDbl,0.8389396198463055,\ensuremath{84\%},"same, generic double sawtooth"
+CompoundReadoutMin,95.20716816549643,95,"shot/exact nested RMSE, compound cells, smallest"
+CompoundReadoutMax,646.984473629812,647,"shot/exact nested RMSE, compound cells, largest"
+CompoundStopFactor,21.63579102103745,22,exact/optimum nested RMSE in the compound cells (the stopping-rule part)
+RepEnvelope,0.36787944117144233,\ensuremath{0.37},"largest reachable coefficient, e^s"
+RepFloor,0.06972568282762663,\ensuremath{6.973\times10^{-2}},certified training-RMSE floor
+RepFloorRatio,7506.576787485704,"7{,}507",certified floor / class optimum
+RepObserved,0.10490657133829495,\ensuremath{1.049\times10^{-1}},"median nested RMSE, study settings"
+RepNormalised,0.10490657071198968,\ensuremath{1.049\times10^{-1}},"median nested RMSE, normalised stopping"
+RepInverseBest,0.3949950500632217,\ensuremath{3.950\times10^{-1}},best inverse-fit nested RMSE
+RepClassOpt,1.107782318079879e-05,\ensuremath{1.108\times10^{-5}},"class optimum, nested RMSE"
+RepNull,1.1128308314806237e-05,\ensuremath{1.113\times10^{-5}},"spherical_odd null, median nested RMSE"
+MutDetected,10.0,10,"detectable mutants detected, final check layer"
+MutTotal,10.0,10,detectable mutants
