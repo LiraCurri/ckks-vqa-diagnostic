@@ -1,0 +1,117 @@
+{
+ "rules_version": "1.3",
+ "cases": [
+  {
+   "case": "optimiser_absolute",
+   "expected": "optimiser",
+   "params": {
+    "kappa": 10000.0
+   },
+   "shortfall_median": 1.4024538855380833,
+   "shortfall_iqr": [
+    1.0549344894848145,
+    3.0826596797297476
+   ],
+   "evidence": {
+    "observed": 3.107227232864249e-06,
+    "reference": "class",
+    "optimizer_success": true,
+    "restarts_agree": false,
+    "class_optimum": 2.2155646363175006e-06,
+    "unrestricted_optimum": 1.735462899783449e-06,
+    "null_result": 2.280986141685125e-06,
+    "inverse_best": 2.2155646363175006e-06,
+    "scale_check_fails": true,
+    "normalised_result": 2.2155646842194406e-06,
+    "exact_result": null,
+    "noise_ratio": null
+   },
+   "verdicts": {
+    "all": "optimiser",
+    "without 1": "optimiser",
+    "without 2": "optimiser",
+    "without 3": "optimiser",
+    "without 4": "optimiser",
+    "without 5": "optimiser",
+    "without 6": "optimiser",
+    "without 4+5": "undetermined"
+   },
+   "correct": true
+  },
+  {
+   "case": "optimiser_relative",
+   "expected": "optimiser",
+   "params": {
+    "kappa": 10000000.0
+   },
+   "shortfall_median": 19404.151055478364,
+   "shortfall_iqr": [
+    9779.431223034668,
+    26022.568472190203
+   ],
+   "evidence": {
+    "observed": 0.04299115087628077,
+    "reference": "class",
+    "optimizer_success": true,
+    "restarts_agree": false,
+    "class_optimum": 2.2155646363175006e-06,
+    "unrestricted_optimum": 1.735462899783449e-06,
+    "null_result": 2.280986141685125e-06,
+    "inverse_best": 2.2155646363175006e-06,
+    "scale_check_fails": false,
+    "normalised_result": 0.04299115087628077,
+    "exact_result": null,
+    "noise_ratio": null
+   },
+   "verdicts": {
+    "all": "optimiser",
+    "without 1": "optimiser",
+    "without 2": "optimiser",
+    "without 3": "optimiser",
+    "without 4": "undetermined",
+    "without 5": "optimiser",
+    "without 6": "optimiser",
+    "without 4+5": "undetermined"
+   },
+   "correct": true
+  },
+  {
+   "case": "reachability_near",
+   "expected": "reachability",
+   "params": {
+    "u": 0.20010253802734057,
+    "certified_floor_ratio_train": 1.249999999998677
+   },
+   "shortfall_median": 4.452237292207867,
+   "shortfall_iqr": [
+    3.2350860781551924,
+    18.548354598548187
+   ],
+   "evidence": {
+    "observed": 9.864219497109737e-06,
+    "reference": "class",
+    "optimizer_success": true,
+    "restarts_agree": false,
+    "class_optimum": 2.2155646363175006e-06,
+    "unrestricted_optimum": 1.735462899783449e-06,
+    "null_result": 2.280986141685125e-06,
+    "inverse_best": 6.730205611415857e-05,
+    "scale_check_fails": true,
+    "normalised_result": 2.919188767729991e-06,
+    "exact_result": null,
+    "noise_ratio": null
+   },
+   "verdicts": {
+    "all": "optimiser",
+    "without 1": "optimiser",
+    "without 2": "optimiser",
+    "without 3": "optimiser",
+    "without 4": "optimiser",
+    "without 5": "reachability",
+    "without 6": "optimiser",
+    "without 4+5": "undetermined"
+   },
+   "correct": false
+  }
+ ]
+}
