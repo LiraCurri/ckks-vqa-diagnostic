@@ -20,7 +20,7 @@
     "class_optimum": 2.2155646363175006e-06,
     "unrestricted_optimum": 1.735462899783449e-06,
     "null_result": 2.280986141685125e-06,
-    "inverse_best": 2.2155646363175006e-06,
+    "inverse_best": 2.2143471150986883e-06,
     "scale_check_fails": true,
     "normalised_result": 2.2155646842194406e-06,
     "exact_result": null,
@@ -36,7 +36,12 @@
     "without 6": "optimiser",
     "without 4+5": "undetermined"
    },
-   "correct": true
+   "correct": true,
+   "diagnostics": {
+    "inverse_analytic_best_over_optimum": 0.9999037952653508,
+    "inverse_analytic_restarts_reached": 40,
+    "inverse_restarts": 40
+   }
   },
   {
    "case": "optimiser_relative",
@@ -57,47 +62,53 @@
     "class_optimum": 2.2155646363175006e-06,
     "unrestricted_optimum": 1.735462899783449e-06,
     "null_result": 2.280986141685125e-06,
-    "inverse_best": 2.2155646363175006e-06,
+    "inverse_best": 0.0012415866768683182,
     "scale_check_fails": false,
     "normalised_result": 0.04299115087628077,
     "exact_result": null,
     "noise_ratio": null
    },
    "verdicts": {
-    "all": "optimiser",
-    "without 1": "optimiser",
-    "without 2": "optimiser",
-    "without 3": "optimiser",
+    "all": "reachability",
+    "without 1": "reachability",
+    "without 2": "reachability",
+    "without 3": "reachability",
     "without 4": "undetermined",
-    "without 5": "optimiser",
-    "without 6": "optimiser",
+    "without 5": "reachability",
+    "without 6": "reachability",
     "without 4+5": "undetermined"
    },
-   "correct": true
+   "correct": false,
+   "diagnostics": {
+    "inverse_analytic_best_over_optimum": 0.9991352271264256,
+    "inverse_analytic_restarts_reached": 40,
+    "inverse_restarts": 40
+   }
   },
   {
    "case": "reachability_near",
    "expected": "reachability",
    "params": {
-    "u": 0.20010253802734057,
-    "certified_floor_ratio_train": 1.249999999998677
+    "u": 0.20010476611053526,
+    "certified_floor_ratio_train": 1.2499999999986433,
+    "floor_nested_over_class_optimum": 1.3104533160190939
    },
-   "shortfall_median": 4.452237292207867,
+   "shortfall_median": 4.37189484492606,
    "shortfall_iqr": [
-    3.2350860781551924,
-    18.548354598548187
+    2.977182947001549,
+    18.54719599087906
    ],
    "evidence": {
-    "observed": 9.864219497109737e-06,
+    "observed": 9.686215612116962e-06,
     "reference": "class",
     "optimizer_success": true,
     "restarts_agree": false,
     "class_optimum": 2.2155646363175006e-06,
     "unrestricted_optimum": 1.735462899783449e-06,
     "null_result": 2.280986141685125e-06,
-    "inverse_best": 6.730205611415857e-05,
+    "inverse_best": 6.584229715907923e-05,
     "scale_check_fails": true,
-    "normalised_result": 2.919188767729991e-06,
+    "normalised_result": 2.8995421817466582e-06,
     "exact_result": null,
     "noise_ratio": null
    },
@@ -111,7 +122,8 @@
     "without 6": "optimiser",
     "without 4+5": "undetermined"
    },
-   "correct": false
+   "correct": false,
+   "diagnostics": {}
   }
  ]
 }

@@ -110,10 +110,12 @@ INVERSE_OPTIONS = {"ftol": 1e-18, "gtol": 1e-14, "maxls": 100, "maxfun": 1_000_0
 INVERSE_SEEDS, INVERSE_MAXITER = range(40), 20_000
 
 
-def inverse_fit(p, kind, param):
-    """Executed inverse fit to the class optimum, as in the principal experiment;
-    returns the best nested RMSE over the restarts."""
-    best = np.inf
+def inverse_fit(p, kind, param, analytic=False):
+    """Executed inverse fit to the class optimum. With analytic=False (the
+    protocol's procedure, as in the principal experiment) L-BFGS-B uses
+    finite-difference gradients; returns the best nested RMSE over the restarts.
+    analytic=True is a diagnostic only and never enters a verdict."""
+    best, reached = np.inf, 0
     for seed in INVERSE_SEEDS:
         rng = np.random.default_rng(seed)
         if kind == "diag":
@@ -124,10 +126,17 @@ def inverse_fit(p, kind, param):
             x0 = rng.normal(0, 1.0, len(p.cols))
             to_c = lambda r: param * np.tanh(r)                  # noqa: E731
         target = p.cstar[p.cols]
+        extra = {}
+        if analytic:
+            if kind != "diag":
+                raise ValueError("analytic inverse gradient implemented for the diagonal map only")
+            extra["jac"] = lambda r: 2.0 * d * (d * r - target)
         res = minimize(lambda r: float(np.sum((to_c(r) - target) ** 2)), x0, method="L-BFGS-B",
-                       options={"maxiter": INVERSE_MAXITER, **INVERSE_OPTIONS})
-        best = min(best, p.nested(p.coeffs(to_c(res.x))))
-    return best
+                       options={"maxiter": INVERSE_MAXITER, **INVERSE_OPTIONS}, **extra)
+        v = p.nested(p.coeffs(to_c(res.x)))
+        best = min(best, v)
+        reached += v <= (1.0 + rules.GAP_TOL) * p.class_opt
+    return (best, reached) if analytic else best
 
 
 def arm(p, kind, param, options, scale=1.0):
@@ -219,6 +228,11 @@ def main():
     }
     os.makedirs(args.output_dir, exist_ok=True)
     rows = []
+    diagnostics = {name: {"inverse_analytic_best_over_optimum": b / p.class_opt,
+                          "inverse_analytic_restarts_reached": int(n),
+                          "inverse_restarts": len(INVERSE_SEEDS)}
+                   for name, kappa in (("optimiser_absolute", k_abs), ("optimiser_relative", k_rel))
+                   for b, n in [inverse_fit(p, "diag", kappa, analytic=True)]}
     for name, (e, vals, expected, params) in cases.items():
         verdicts = {("all" if not c else "without " + "+".join(map(str, c))):
                     rules.attribute(_withheld(e, c)) for c in WITHHOLD}
@@ -228,7 +242,8 @@ def main():
                                        float(np.percentile(vals, 75) / e.class_optimum)],
                      "evidence": {k: (bool(v) if isinstance(v, (bool, np.bool_)) else v)
                                   for k, v in e.__dict__.items()},
-                     "verdicts": verdicts, "correct": verdicts["all"] == expected})
+                     "verdicts": verdicts, "correct": verdicts["all"] == expected,
+                     "diagnostics": diagnostics.get(name, {})})
     with open(os.path.join(args.output_dir, "constructed_cases.json"), "w") as fh:
         json.dump({"rules_version": rules.RULES_VERSION, "cases": rows}, fh, indent=1, default=float)
     for r in rows:

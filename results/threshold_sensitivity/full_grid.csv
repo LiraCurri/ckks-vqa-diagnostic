@@ -1,28 +1,28 @@
 GAP_TOL,SHARE,READOUT_TOL,independent_correct,independent_total,diagnosed_consistent,diagnosed_total,changed_cases
-0.05,0.4,0.15,12,13,3,3,readout_double_sawtooth_300: none (expected readout)
-0.05,0.4,0.25,12,13,3,3,readout_double_sawtooth_300: none (expected readout)
-0.05,0.4,0.35,12,13,3,3,readout_double_sawtooth_300: none (expected readout)
-0.05,0.5,0.15,12,13,3,3,readout_double_sawtooth_300: none (expected readout)
-0.05,0.5,0.25,12,13,3,3,readout_double_sawtooth_300: none (expected readout)
-0.05,0.5,0.35,12,13,3,3,readout_double_sawtooth_300: none (expected readout)
-0.05,0.6,0.15,12,13,2,3,generic_sawtooth: undetermined (expected optimiser); readout_double_sawtooth_300: none (expected readout)
-0.05,0.6,0.25,12,13,2,3,generic_sawtooth: undetermined (expected optimiser); readout_double_sawtooth_300: none (expected readout)
-0.05,0.6,0.35,12,13,2,3,generic_sawtooth: undetermined (expected optimiser); readout_double_sawtooth_300: none (expected readout)
-0.1,0.4,0.15,13,13,3,3,
-0.1,0.4,0.25,13,13,3,3,
-0.1,0.4,0.35,13,13,3,3,
-0.1,0.5,0.15,13,13,3,3,
-0.1,0.5,0.25,13,13,3,3,
-0.1,0.5,0.35,13,13,3,3,
-0.1,0.6,0.15,13,13,2,3,generic_sawtooth: undetermined (expected optimiser)
-0.1,0.6,0.25,13,13,2,3,generic_sawtooth: undetermined (expected optimiser)
-0.1,0.6,0.35,13,13,2,3,generic_sawtooth: undetermined (expected optimiser)
-0.2,0.4,0.15,13,13,3,3,
-0.2,0.4,0.25,13,13,3,3,
-0.2,0.4,0.35,13,13,3,3,
-0.2,0.5,0.15,13,13,3,3,
-0.2,0.5,0.25,13,13,3,3,
-0.2,0.5,0.35,13,13,3,3,
-0.2,0.6,0.15,13,13,2,3,generic_sawtooth: undetermined (expected optimiser)
-0.2,0.6,0.25,13,13,2,3,generic_sawtooth: undetermined (expected optimiser)
-0.2,0.6,0.35,13,13,2,3,generic_sawtooth: undetermined (expected optimiser)
+0.05,0.4,0.15,11,13,3,3,constructed_optimiser_relative: reachability (expected optimiser); readout_double_sawtooth_300: none (expected readout)
+0.05,0.4,0.25,11,13,3,3,constructed_optimiser_relative: reachability (expected optimiser); readout_double_sawtooth_300: none (expected readout)
+0.05,0.4,0.35,11,13,3,3,constructed_optimiser_relative: reachability (expected optimiser); readout_double_sawtooth_300: none (expected readout)
+0.05,0.5,0.15,11,13,3,3,constructed_optimiser_relative: reachability (expected optimiser); readout_double_sawtooth_300: none (expected readout)
+0.05,0.5,0.25,11,13,3,3,constructed_optimiser_relative: reachability (expected optimiser); readout_double_sawtooth_300: none (expected readout)
+0.05,0.5,0.35,11,13,3,3,constructed_optimiser_relative: reachability (expected optimiser); readout_double_sawtooth_300: none (expected readout)
+0.05,0.6,0.15,11,13,2,3,constructed_optimiser_relative: reachability (expected optimiser); generic_sawtooth: undetermined (expected optimiser); readout_double_sawtooth_300: none (expected readout)
+0.05,0.6,0.25,11,13,2,3,constructed_optimiser_relative: reachability (expected optimiser); generic_sawtooth: undetermined (expected optimiser); readout_double_sawtooth_300: none (expected readout)
+0.05,0.6,0.35,11,13,2,3,constructed_optimiser_relative: reachability (expected optimiser); generic_sawtooth: undetermined (expected optimiser); readout_double_sawtooth_300: none (expected readout)
+0.1,0.4,0.15,12,13,3,3,constructed_optimiser_relative: reachability (expected optimiser)
+0.1,0.4,0.25,12,13,3,3,constructed_optimiser_relative: reachability (expected optimiser)
+0.1,0.4,0.35,12,13,3,3,constructed_optimiser_relative: reachability (expected optimiser)
+0.1,0.5,0.15,12,13,3,3,constructed_optimiser_relative: reachability (expected optimiser)
+0.1,0.5,0.25,12,13,3,3,constructed_optimiser_relative: reachability (expected optimiser)
+0.1,0.5,0.35,12,13,3,3,constructed_optimiser_relative: reachability (expected optimiser)
+0.1,0.6,0.15,12,13,2,3,constructed_optimiser_relative: reachability (expected optimiser); generic_sawtooth: undetermined (expected optimiser)
+0.1,0.6,0.25,12,13,2,3,constructed_optimiser_relative: reachability (expected optimiser); generic_sawtooth: undetermined (expected optimiser)
+0.1,0.6,0.35,12,13,2,3,constructed_optimiser_relative: reachability (expected optimiser); generic_sawtooth: undetermined (expected optimiser)
+0.2,0.4,0.15,12,13,3,3,constructed_optimiser_relative: reachability (expected optimiser)
+0.2,0.4,0.25,12,13,3,3,constructed_optimiser_relative: reachability (expected optimiser)
+0.2,0.4,0.35,12,13,3,3,constructed_optimiser_relative: reachability (expected optimiser)
+0.2,0.5,0.15,12,13,3,3,constructed_optimiser_relative: reachability (expected optimiser)
+0.2,0.5,0.25,12,13,3,3,constructed_optimiser_relative: reachability (expected optimiser)
+0.2,0.5,0.35,12,13,3,3,constructed_optimiser_relative: reachability (expected optimiser)
+0.2,0.6,0.15,12,13,2,3,constructed_optimiser_relative: reachability (expected optimiser); generic_sawtooth: undetermined (expected optimiser)
+0.2,0.6,0.25,12,13,2,3,constructed_optimiser_relative: reachability (expected optimiser); generic_sawtooth: undetermined (expected optimiser)
+0.2,0.6,0.35,12,13,2,3,constructed_optimiser_relative: reachability (expected optimiser); generic_sawtooth: undetermined (expected optimiser)
