@@ -1,0 +1,14 @@
+mutant,fault,design,paper_table,selection_rule,rank,convergence,variance,bounds,stopping_scale,detected,as_predicted
+baseline (correct code),,False,False,False,False,False,False,False,False,False,True
+sign_flip,sign of one observable flipped in the XXXX sign table,False,False,False,False,True,True,False,False,True,True
+y_as_x,Y basis measured with the X rotation,False,False,False,False,True,True,False,False,True,True
+no_rotation,basis rotation omitted before measurement (D2),False,False,False,False,True,True,False,False,True,True
+observable_order,"decoder returns observable order, not harmonic order (D1)",True,False,False,False,False,False,False,False,True,True
+harmonic_swap,two same-parity harmonics swapped in the decoder table,False,True,False,False,False,False,False,False,True,True
+symmetry_break,parity-qubit rotation does not commute with Z_3,False,False,True,True,False,False,False,False,True,True
+weights_twice,decoder weights applied twice,True,False,False,False,False,False,False,False,True,False
+budget_per_basis,shot budget applied per basis instead of in total,False,False,False,False,False,True,False,False,True,True
+ridge_as_rmse_bound,ridge optimum used as the RMSE reference (D3),False,False,False,False,False,False,True,False,True,True
+coarse_stopping,stopping test absolute for an objective below one (D4),False,False,False,False,False,False,False,True,True,True
+train_on_nested,training on the nested evaluation grid,False,False,False,False,False,False,False,False,False,True
+no_projection,even-sector projection removed (equivalent mutant),False,False,False,False,False,False,False,False,False,True

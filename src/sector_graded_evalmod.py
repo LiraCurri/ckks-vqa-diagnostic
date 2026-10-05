@@ -400,6 +400,20 @@ def validate_sector_design() -> None:
         assert np.isclose(c[OBSERVABLE_HARMONIC[i] - 1], 1.0), (i, OBSERVABLES[i])
         assert np.isclose(np.sum(np.abs(c)), 1.0), (i, OBSERVABLES[i])
 
+    # Weight guard, after the ordering guard has passed for every observable:
+    # decoder weights are applied exactly once, so under non-trivial weights the
+    # unit expectation lands on its harmonic with coefficient w_k (with unit
+    # weights a doubled weight would be invisible).
+    for p in (1.0, 2.0):
+        w = preconditioner(p)
+        for i in range(N_HARMONICS):
+            unit = np.zeros(N_HARMONICS)
+            unit[i] = 1.0
+            k = OBSERVABLE_HARMONIC[i] - 1
+            c = decode(unit, zero_scales, w)
+            assert np.isclose(c[k], w[k], rtol=1e-12, atol=0.0), (i, OBSERVABLES[i], p)
+            assert np.isclose(np.sum(np.abs(c)), w[k], rtol=1e-12, atol=0.0), (i, OBSERVABLES[i], p)
+
     for p in (0.0, 1.0, 2.0):
         w = preconditioner(p)
         assert w.shape == (N_HARMONICS,) and np.all(w > 0.0)
@@ -752,7 +766,7 @@ def partial_product_warm_start_params(n_layers: int, seed: int,
     return np.concatenate([p, log_scales])
 
 
-STOPPING_SCALE_LIMIT = 1e-5  # recalibrated from 1e-3 after the generic-sawtooth check
+STOPPING_SCALE_LIMIT = 1e-5  # effective threshold / data-fit term
 
 
 def stopping_scale(cache: GridCache, alpha: float, options: dict | None = None,
