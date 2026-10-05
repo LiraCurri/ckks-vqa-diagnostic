@@ -1,0 +1,10 @@
+varied,value,independent_correct,independent_total,diagnosed_consistent,diagnosed_total,changed_cases
+GAP_TOL,0.05,12,13,3,3,readout_double_sawtooth_300: none (expected readout)
+GAP_TOL,0.1,13,13,3,3,
+GAP_TOL,0.2,13,13,3,3,
+SHARE,0.4,13,13,3,3,
+SHARE,0.5,13,13,3,3,
+SHARE,0.6,13,13,2,3,generic_sawtooth: undetermined (expected optimiser)
+READOUT_TOL,0.15,13,13,3,3,
+READOUT_TOL,0.25,13,13,3,3,
+READOUT_TOL,0.35,13,13,3,3,
