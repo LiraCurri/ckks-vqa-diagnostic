@@ -319,3 +319,79 @@ RepClassOpt,1.107782318079879e-05,\ensuremath{1.108\times10^{-5}},"class optimum
 RepNull,1.1128308314806237e-05,\ensuremath{1.113\times10^{-5}},"spherical_odd null, median nested RMSE"
 MutDetected,10.0,10,"detectable mutants detected, final check layer"
 MutTotal,10.0,10,detectable mutants
+ConsSingleCorrect,1.0,1,single-cause constructed cases attributed correctly
+ConsSingleTotal,2.0,2,single-cause constructed cases
+ConsAbsKappa,10000.0,\ensuremath{1\times10^{4}},"condition number, absolute-test case"
+ConsAbsShortfall,1.4024538855380833,\ensuremath{1.40},"median shortfall over the class optimum, absolute-test case"
+ConsRelKappa,10000000.0,\ensuremath{1\times10^{7}},"condition number, scale-check-passing case"
+ConsRelShortfall,19404.151055478364,\ensuremath{1.9\times10^{4}},"median shortfall, scale-check-passing case"
+ConsNearFloor,1.2499999999986433,\ensuremath{1.25},certified training-RMSE floor (bounded least squares) over the class least-squares RMSE
+ConsNearFloorNested,1.3104533160190939,\ensuremath{1.31},the floor vector's nested RMSE over the class optimum
+ConsRelInverse,560.3928933131757,\ensuremath{560},"executed inverse fit, scale-passing case: best nested RMSE over the optimum"
+ConsRelInverseAnalyticReached,40.0,40,scale-passing case: inverse-fit restarts reaching the optimum with the analytic gradient (diagnostic)
+ConsInverseRestarts,40.0,40,inverse-fit restarts per case
+ConsAbsInverse,0.9994504691044194,\ensuremath{1.00},"executed inverse fit, absolute-test case: best nested RMSE over the optimum"
+ConsNearObserved,4.37189484492606,\ensuremath{4.37},near-boundary case: study-tolerance shortfall
+ConsNearNormalised,1.3087147782634767,\ensuremath{1.31},near-boundary case: shortfall after normalising the stopping test
+SensDefaultCorrect,12.0,12,independent cases attributed correctly at the frozen thresholds
+SensAlwaysWrong,1.0,1,independent cases misattributed at every setting
+SensDefaultDiagnosed,3.0,3,diagnosed cases consistent with their diagnosis at the frozen thresholds
+SensSettings,27.0,27,threshold combinations in the full grid
+SensIndepTotal,13.0,13,independent cases scored
+SensIndepAllCorrect,18.0,18,combinations keeping every other independent verdict
+SensAllCorrect,12.0,12,combinations keeping every scored verdict
+SensMinGapTolAllCorrect,0.1,\ensuremath{0.10},smallest GAP_TOL at which every combination keeps the independent verdicts
+SensShareFlipClosed,0.578763919809531,\ensuremath{58\%},share of the gap closed by the generic sawtooth rerun (flips at SHARE = 0.6)
+SensGapFlipPredicted,0.06513115668608349,\ensuremath{6.5\%},"predicted excess over the optimum, readout case that flips at GAP_TOL = 0.05"
+SensGapFlipObserved,0.04262076611175192,\ensuremath{4.3\%},"observed excess over the optimum, same case"
+SensReadoutPredObsMaxDev,0.05763550939488682,\ensuremath{5.8\%},largest relative difference between predicted and observed readout error
+GradSeeds,20.0,20,"restarts per arm, gradient cross-check"
+GradExactStudyNested,3.865326348782765e-05,\ensuremath{3.865\times10^{-5}},"median nested RMSE, exact gradient, ftol 1e-12"
+GradExactStudyReached,2.0,2,"restarts within 1e-12 of the optimum, exact gradient, ftol 1e-12"
+GradExactTightNested,2.2155619230258625e-06,\ensuremath{2.216\times10^{-6}},"median nested RMSE, exact gradient, ftol 1e-18"
+GradExactTightReached,16.0,16,"restarts within 1e-12 of the optimum, exact gradient, ftol 1e-18"
+GradExactTightReachedPct,0.8,\ensuremath{80\%},"the same, as a share"
+GradFdTightReached,12.0,12,the same with finite differences (cross-check's own fd arm)
+GradExactReachedDrift,0.0015722801765394312,\ensuremath{0.2\%},largest nested-RMSE deviation from the class optimum among exact-gradient runs that reach it
+GradExactTightStalled,4.0,4,exact-gradient restarts not reaching the optimum at ftol 1e-18
+GradExactStallMin,1.4895325872245155,\ensuremath{1.5},"their objective over the optimum, smallest"
+GradExactStallMax,2.265512017305723,\ensuremath{2.3},"their objective over the optimum, largest"
+GradExactStalledOnBound,2.0,2,"of those, runs ending with the odd_x log-scale on its lower bound"
+GradFdErrorOverGradient,0.016125286880700702,\ensuremath{2\%},"median forward-difference gradient error over the exact gradient, at fd endpoints short of the optimum, ftol 1e-18"
+GradFdErrorAbs,5.887263611851502e-10,\ensuremath{6\times10^{-10}},"median max-norm error of the forward-difference gradient at the endpoints, both arms, ftol 1e-18"
+GradExactStalledOffBound,2.0,2,exact-gradient restarts falling short at ftol 1e-18 with no decoder scale on its bound
+NullReachedTri,17.0,17,"null restarts within 1e-12 of the class optimum, triangle"
+ScaleBoundRuns,7.0,7,principal equivariant triangle runs ending with a live log-scale on its bound
+ScaleBoundTotal,60.0,60,"principal equivariant triangle runs, all depths"
+StallObjRatioMin,1.0044206623569618,\ensuremath{1.004},smallest objective/optimum among runs not reaching the optimum at ftol 1e-18
+StallObjRatioMax,15.612388350230407,\ensuremath{15.6},largest objective/optimum among those runs
+TopoRankCycle,14.0,14,"Jacobian rank, cycle circuits, every decoder, L>=2"
+TopoRankCrossedMatched,13.0,13,"Jacobian rank, crossed circuit, matched decoder, L>=2"
+TopoRankCrossedMismatched,12.0,12,"Jacobian rank, crossed circuit, mismatched decoders, L>=2"
+TopoRankLOneMatchedCycle,12.0,12,"Jacobian rank, cycle circuits, matched decoder, L=1"
+TopoRankLOneMismatchedCycle,14.0,14,"Jacobian rank, cycle circuits, mismatched decoders, L=1"
+TopoRankLOneMatchedCrossed,11.0,11,"Jacobian rank, crossed circuit, matched decoder, L=1"
+TopoRankLOneMismatchedCrossed,12.0,12,"Jacobian rank, crossed circuit, mismatched decoders, L=1"
+TopoRingFactorCycle,2.0,2,"ring correlators that factorise, cycle circuits"
+TopoRingFactorCrossed,4.0,4,"ring correlators that factorise, crossed circuit"
+TopoDistinctResolved,17.0,17,distinct contrasts resolved on at least one metric
+TopoDecoderMatchedWorse,10.0,10,resolved decoder contrasts with the matched decoder worse
+TopoDecoderMatchedBetter,9.0,9,resolved decoder contrasts with the matched decoder better
+AblPriorCases,2.0,2,calibration cases expected prior
+AblReadoutCases,3.0,3,calibration cases expected readout
+AblNoneCases,5.0,5,calibration cases expected none (negative controls)
+TopoNullRestarts,200.0,200,restarts of the structure-matched null per cell
+TopoNullBeaten,0.0,0,circuit runs whose objective beats the class optimum of their cell
+TopoNullCycleNested,0.0372963544438608,\ensuremath{0.0373},"class optimum, nested RMSE, cycle circuit, matched decoder, K=8"
+TopoNullCrossedNested,0.047076293474176,\ensuremath{0.0471},"class optimum, nested RMSE, crossed circuit, matched decoder, K=8"
+TopoNullGapNested,0.009779939030315203,\ensuremath{0.0098},"difference of the two class optima, nested RMSE, K=8"
+TopoNullDeepBestMax,0.016792779393421498,\ensuremath{1.7\%},"largest excess of the best circuit objective over the class optimum, L>=2, K=8, over cell classes"
+TopoNullDeepClassesAt,4.0,4,cell classes at K=8 whose best circuit run at L>=2 is within 0.1% of the class optimum
+TopoNullClasses,5.0,5,cell classes at K=8
+TopoNullDeepShareMin,0.0,\ensuremath{0\%},"smallest share of circuit runs within 1% of the class optimum, L>=2, K=8"
+TopoNullDeepShareMax,0.4875,\ensuremath{49\%},"largest share of circuit runs within 1% of the class optimum, L>=2, K=8"
+TopoNullLOneMatchedMin,1.749293937992978,\ensuremath{1.75},"best circuit objective over the class optimum, L=1, matched cells, K=8, smallest"
+TopoNullLOneMatchedMax,1.8673047594860877,\ensuremath{1.87},"the same, largest"
+TopoNullLOneMismatchedMax,0.01776817116615259,\ensuremath{1.8\%},"largest excess of the best circuit objective over the class optimum, L=1, mismatched cells, K=8"
+TopoNullKSixteenSpread,0.0038758991403005094,\ensuremath{0.4\%},"spread of the class optima over all cells, nested RMSE, K=16"
+TopoNullOnBoundClasses,2.0,2,cell classes at K=8 whose class optimum has a decoder scale on its bound

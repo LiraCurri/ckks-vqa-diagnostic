@@ -1,0 +1,265 @@
+class,contrast,q0,n_layers,topology,decoder_alignment,phase_rule,metric,cause_known_by,structural_prediction,resolved,all,without 3,rules_version
+phase rule,oriented_minus_uniform,8,1,crossed,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,crossed,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,crossed,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,mirror,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,mirror,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,mirror,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,nearest,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,nearest,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,nearest,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,crossed,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,crossed,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,crossed,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,mirror,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,mirror,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,mirror,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,nearest,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,nearest,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,nearest,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,crossed,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,crossed,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,crossed,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,mirror,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,mirror,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,mirror,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,nearest,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,nearest,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,nearest,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,crossed,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,crossed,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,crossed,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,mirror,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,mirror,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,mirror,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,nearest,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,nearest,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,nearest,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,crossed,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,crossed,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,crossed,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,mirror,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,mirror,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,mirror,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,nearest,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,nearest,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,nearest,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,crossed,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,crossed,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,crossed,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,mirror,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,mirror,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,mirror,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,nearest,crossed,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,nearest,mirror,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,nearest,nearest,both,nested_masked_rmse,no prediction,none,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,1,crossed,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,8,1,crossed,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,8,1,mirror,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,8,1,mirror,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,8,1,nearest,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,1,nearest,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,8,2,crossed,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,2,crossed,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,2,mirror,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,2,mirror,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,2,nearest,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,2,nearest,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,8,3,crossed,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,3,crossed,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,3,mirror,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,3,mirror,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,3,nearest,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,8,3,nearest,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,1,crossed,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,1,crossed,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,1,mirror,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,1,mirror,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,1,nearest,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,1,nearest,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,2,crossed,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,2,crossed,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,2,mirror,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,2,mirror,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,2,nearest,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,2,nearest,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,16,3,crossed,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,16,3,crossed,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,3,mirror,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,3,mirror,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,3,nearest,n/a,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,3,nearest,n/a,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,8,1,crossed_vs_nearest,matched,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_mirror_matched,8,1,crossed_vs_mirror,matched,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,8,1,crossed_vs_nearest,matched,uniform,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+crossed vs cycle,crossed_minus_mirror_matched,8,1,crossed_vs_mirror,matched,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,8,2,crossed_vs_nearest,matched,oriented,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+crossed vs cycle,crossed_minus_mirror_matched,8,2,crossed_vs_mirror,matched,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,8,2,crossed_vs_nearest,matched,uniform,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+crossed vs cycle,crossed_minus_mirror_matched,8,2,crossed_vs_mirror,matched,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,8,3,crossed_vs_nearest,matched,oriented,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+crossed vs cycle,crossed_minus_mirror_matched,8,3,crossed_vs_mirror,matched,oriented,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+crossed vs cycle,crossed_minus_nearest_matched,8,3,crossed_vs_nearest,matched,uniform,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+crossed vs cycle,crossed_minus_mirror_matched,8,3,crossed_vs_mirror,matched,uniform,nested_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+crossed vs cycle,crossed_minus_nearest_matched,16,1,crossed_vs_nearest,matched,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_mirror_matched,16,1,crossed_vs_mirror,matched,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,16,1,crossed_vs_nearest,matched,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_mirror_matched,16,1,crossed_vs_mirror,matched,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,16,2,crossed_vs_nearest,matched,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_mirror_matched,16,2,crossed_vs_mirror,matched,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,16,2,crossed_vs_nearest,matched,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_mirror_matched,16,2,crossed_vs_mirror,matched,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,16,3,crossed_vs_nearest,matched,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_mirror_matched,16,3,crossed_vs_mirror,matched,oriented,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,16,3,crossed_vs_nearest,matched,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_mirror_matched,16,3,crossed_vs_mirror,matched,uniform,nested_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,crossed,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,crossed,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,crossed,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,mirror,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,mirror,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,mirror,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,nearest,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,nearest,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,1,nearest,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,crossed,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,crossed,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,crossed,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,mirror,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,mirror,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,mirror,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,nearest,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,nearest,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,2,nearest,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,crossed,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,crossed,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,crossed,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,mirror,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,mirror,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,mirror,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,nearest,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,nearest,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,8,3,nearest,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,crossed,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,crossed,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,crossed,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,mirror,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,mirror,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,mirror,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,nearest,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,nearest,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,1,nearest,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,crossed,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,crossed,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,crossed,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,mirror,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,mirror,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,mirror,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,nearest,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,nearest,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,2,nearest,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,crossed,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,crossed,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,crossed,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,mirror,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,mirror,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,mirror,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,nearest,crossed,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,nearest,mirror,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+phase rule,oriented_minus_uniform,16,3,nearest,nearest,both,shifted_masked_rmse,no prediction,none,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,1,crossed,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,8,1,crossed,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,8,1,mirror,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,8,1,mirror,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,8,1,nearest,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,1,nearest,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,8,2,crossed,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,2,crossed,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,2,mirror,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,2,mirror,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,2,nearest,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,2,nearest,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,8,3,crossed,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,3,crossed,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,3,mirror,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,3,mirror,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,8,3,nearest,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,8,3,nearest,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,1,crossed,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,1,crossed,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,1,mirror,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,1,mirror,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,1,nearest,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,1,nearest,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,2,crossed,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,16,2,crossed,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,2,mirror,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,2,mirror,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,2,nearest,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,2,nearest,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,16,3,crossed,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+decoder alignment,matched_minus_mean_mismatched,16,3,crossed,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,3,mirror,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,3,mirror,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,3,nearest,n/a,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+decoder alignment,matched_minus_mean_mismatched,16,3,nearest,n/a,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,8,1,crossed_vs_nearest,matched,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_mirror_matched,8,1,crossed_vs_mirror,matched,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,8,1,crossed_vs_nearest,matched,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_mirror_matched,8,1,crossed_vs_mirror,matched,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,8,2,crossed_vs_nearest,matched,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+crossed vs cycle,crossed_minus_mirror_matched,8,2,crossed_vs_mirror,matched,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,8,2,crossed_vs_nearest,matched,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+crossed vs cycle,crossed_minus_mirror_matched,8,2,crossed_vs_mirror,matched,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,8,3,crossed_vs_nearest,matched,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+crossed vs cycle,crossed_minus_mirror_matched,8,3,crossed_vs_mirror,matched,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+crossed vs cycle,crossed_minus_nearest_matched,8,3,crossed_vs_nearest,matched,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+crossed vs cycle,crossed_minus_mirror_matched,8,3,crossed_vs_mirror,matched,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,True,structure,architecture,1.3
+crossed vs cycle,crossed_minus_nearest_matched,16,1,crossed_vs_nearest,matched,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_mirror_matched,16,1,crossed_vs_mirror,matched,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,16,1,crossed_vs_nearest,matched,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_mirror_matched,16,1,crossed_vs_mirror,matched,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,16,2,crossed_vs_nearest,matched,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_mirror_matched,16,2,crossed_vs_mirror,matched,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,16,2,crossed_vs_nearest,matched,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_mirror_matched,16,2,crossed_vs_mirror,matched,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,16,3,crossed_vs_nearest,matched,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_mirror_matched,16,3,crossed_vs_mirror,matched,oriented,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_nearest_matched,16,3,crossed_vs_nearest,matched,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+crossed vs cycle,crossed_minus_mirror_matched,16,3,crossed_vs_mirror,matched,uniform,shifted_masked_rmse,theorem (Prop. 3),differ,False,none,none,1.3
+relabelling control,mirror_mirror_minus_nearest_nearest,8,1,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_mirror_minus_nearest_nearest,8,1,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_mirror_minus_nearest_nearest,8,2,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_mirror_minus_nearest_nearest,8,2,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_mirror_minus_nearest_nearest,8,3,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_mirror_minus_nearest_nearest,8,3,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_mirror_minus_nearest_nearest,16,1,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_mirror_minus_nearest_nearest,16,1,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_mirror_minus_nearest_nearest,16,2,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_mirror_minus_nearest_nearest,16,2,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_mirror_minus_nearest_nearest,16,3,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_mirror_minus_nearest_nearest,16,3,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_nearest_minus_nearest_mirror,8,1,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_nearest_minus_nearest_mirror,8,1,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_nearest_minus_nearest_mirror,8,2,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_nearest_minus_nearest_mirror,8,2,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_nearest_minus_nearest_mirror,8,3,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_nearest_minus_nearest_mirror,8,3,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_nearest_minus_nearest_mirror,16,1,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_nearest_minus_nearest_mirror,16,1,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_nearest_minus_nearest_mirror,16,2,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_nearest_minus_nearest_mirror,16,2,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_nearest_minus_nearest_mirror,16,3,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_nearest_minus_nearest_mirror,16,3,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_crossed_minus_nearest_crossed,8,1,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_crossed_minus_nearest_crossed,8,1,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_crossed_minus_nearest_crossed,8,2,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_crossed_minus_nearest_crossed,8,2,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_crossed_minus_nearest_crossed,8,3,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_crossed_minus_nearest_crossed,8,3,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_crossed_minus_nearest_crossed,16,1,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_crossed_minus_nearest_crossed,16,1,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_crossed_minus_nearest_crossed,16,2,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_crossed_minus_nearest_crossed,16,2,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,True,defect,architecture,1.3
+relabelling control,mirror_crossed_minus_nearest_crossed,16,3,n/a,n/a,oriented,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
+relabelling control,mirror_crossed_minus_nearest_crossed,16,3,n/a,n/a,uniform,nested_masked_rmse,theorem (Prop. 1),equivalent,False,none,none,1.3
