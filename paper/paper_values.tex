@@ -355,6 +355,7 @@
 \newcommand{\pvGradExactTightReached}{16}  % restarts within 1e-12 of the optimum, exact gradient, ftol 1e-18
 \newcommand{\pvGradExactTightReachedPct}{\ensuremath{80\%}}  % the same, as a share
 \newcommand{\pvGradFdTightReached}{12}  % the same with finite differences (cross-check's own fd arm)
+\newcommand{\pvGradFdStudyReached}{2}  % restarts within 1e-12 of the optimum, finite differences, ftol 1e-12
 \newcommand{\pvGradExactReachedDrift}{\ensuremath{0.2\%}}  % largest nested-RMSE deviation from the class optimum among exact-gradient runs that reach it
 \newcommand{\pvGradExactTightStalled}{4}  % exact-gradient restarts not reaching the optimum at ftol 1e-18
 \newcommand{\pvGradExactStallMin}{\ensuremath{1.5}}  % their objective over the optimum, smallest
@@ -364,6 +365,11 @@
 \newcommand{\pvGradFdErrorAbs}{\ensuremath{6\times10^{-10}}}  % median max-norm error of the forward-difference gradient at the endpoints, both arms, ftol 1e-18
 \newcommand{\pvGradExactStalledOffBound}{2}  % exact-gradient restarts falling short at ftol 1e-18 with no decoder scale on its bound
 \newcommand{\pvNullReachedTri}{17}  % null restarts within 1e-12 of the class optimum, triangle
+\newcommand{\pvNullTightExactReached}{20}  % null restarts reaching the class optimum, exact gradient, ftol=1e-18
+\newcommand{\pvNullTightExactNested}{\ensuremath{2.216\times10^{-6}}}  % median nested RMSE of the null, exact gradient, ftol=1e-18
+\newcommand{\pvNullTightExactReachedPct}{\ensuremath{100\%}}  % the same, as a share
+\newcommand{\pvNullTightFdReached}{20}  % the same with finite differences
+\newcommand{\pvNullStudyExactReached}{15}  % null restarts reaching the class optimum, exact gradient, ftol=1e-12
 \newcommand{\pvScaleBoundRuns}{7}  % principal equivariant triangle runs ending with a live log-scale on its bound
 \newcommand{\pvScaleBoundTotal}{60}  % principal equivariant triangle runs, all depths
 \newcommand{\pvStallObjRatioMin}{\ensuremath{1.004}}  % smallest objective/optimum among runs not reaching the optimum at ftol 1e-18
@@ -383,6 +389,7 @@
 \newcommand{\pvAblPriorCases}{2}  % calibration cases expected prior
 \newcommand{\pvAblReadoutCases}{3}  % calibration cases expected readout
 \newcommand{\pvAblNoneCases}{5}  % calibration cases expected none (negative controls)
+\newcommand{\pvAblReadoutAll}{8}  % calibration cases that are readout cases, with or without a predicted shortfall
 \newcommand{\pvTopoNullRestarts}{200}  % restarts of the structure-matched null per cell
 \newcommand{\pvTopoNullBeaten}{0}  % circuit runs whose objective beats the class optimum of their cell
 \newcommand{\pvTopoNullCycleNested}{\ensuremath{0.0373}}  % class optimum, nested RMSE, cycle circuit, matched decoder, K=8

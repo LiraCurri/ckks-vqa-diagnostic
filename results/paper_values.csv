@@ -352,6 +352,7 @@ GradExactTightNested,2.2155619230258625e-06,\ensuremath{2.216\times10^{-6}},"med
 GradExactTightReached,16.0,16,"restarts within 1e-12 of the optimum, exact gradient, ftol 1e-18"
 GradExactTightReachedPct,0.8,\ensuremath{80\%},"the same, as a share"
 GradFdTightReached,12.0,12,the same with finite differences (cross-check's own fd arm)
+GradFdStudyReached,2.0,2,"restarts within 1e-12 of the optimum, finite differences, ftol 1e-12"
 GradExactReachedDrift,0.0015722801765394312,\ensuremath{0.2\%},largest nested-RMSE deviation from the class optimum among exact-gradient runs that reach it
 GradExactTightStalled,4.0,4,exact-gradient restarts not reaching the optimum at ftol 1e-18
 GradExactStallMin,1.4895325872245155,\ensuremath{1.5},"their objective over the optimum, smallest"
@@ -361,6 +362,11 @@ GradFdErrorOverGradient,0.016125286880700702,\ensuremath{2\%},"median forward-di
 GradFdErrorAbs,5.887263611851502e-10,\ensuremath{6\times10^{-10}},"median max-norm error of the forward-difference gradient at the endpoints, both arms, ftol 1e-18"
 GradExactStalledOffBound,2.0,2,exact-gradient restarts falling short at ftol 1e-18 with no decoder scale on its bound
 NullReachedTri,17.0,17,"null restarts within 1e-12 of the class optimum, triangle"
+NullTightExactReached,20.0,20,"null restarts reaching the class optimum, exact gradient, ftol=1e-18"
+NullTightExactNested,2.2155639607718504e-06,\ensuremath{2.216\times10^{-6}},"median nested RMSE of the null, exact gradient, ftol=1e-18"
+NullTightExactReachedPct,1.0,\ensuremath{100\%},"the same, as a share"
+NullTightFdReached,20.0,20,the same with finite differences
+NullStudyExactReached,15.0,15,"null restarts reaching the class optimum, exact gradient, ftol=1e-12"
 ScaleBoundRuns,7.0,7,principal equivariant triangle runs ending with a live log-scale on its bound
 ScaleBoundTotal,60.0,60,"principal equivariant triangle runs, all depths"
 StallObjRatioMin,1.0044206623569618,\ensuremath{1.004},smallest objective/optimum among runs not reaching the optimum at ftol 1e-18
@@ -380,6 +386,7 @@ TopoDecoderMatchedBetter,9.0,9,resolved decoder contrasts with the matched decod
 AblPriorCases,2.0,2,calibration cases expected prior
 AblReadoutCases,3.0,3,calibration cases expected readout
 AblNoneCases,5.0,5,calibration cases expected none (negative controls)
+AblReadoutAll,8.0,8,"calibration cases that are readout cases, with or without a predicted shortfall"
 TopoNullRestarts,200.0,200,restarts of the structure-matched null per cell
 TopoNullBeaten,0.0,0,circuit runs whose objective beats the class optimum of their cell
 TopoNullCycleNested,0.0372963544438608,\ensuremath{0.0373},"class optimum, nested RMSE, cycle circuit, matched decoder, K=8"

@@ -59,3 +59,9 @@ def test_structure_matched_null_has_the_circuit_rank() -> None:
 def test_structure_matched_null_gradient_is_exact() -> None:
     import topology_structured_null as tsn
     assert tsn.validate_gradient(n_points=1) < 1e-6
+
+
+def test_null_cross_check_gradient_is_exact():
+    """The analytic gradient of the spherical null agrees with central differences."""
+    import null_cross_check as ncc
+    assert ncc.validate_gradient(ncc.Null()) < 1e-7
