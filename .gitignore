@@ -2,6 +2,7 @@
 __pycache__/
 *.pyc
 *.pyo
+.pytest_cache/
 
 # Jupyter
 .ipynb_checkpoints/
@@ -18,10 +19,12 @@ desktop.ini
 venv/
 env/
 
-# Manuscript: generated files
+# Manuscript: LaTeX build files and the manuscript source.
+# The generated macro and table files are kept.
 paper/*.tex
 !paper/paper_values.tex
 !paper/family_table.tex
+!paper/topology_table.tex
 paper/*.pdf
 paper/*.aux
 paper/*.log
@@ -30,6 +33,10 @@ paper/*.blg
 paper/*.out
 paper/*.synctex.gz
 
-# Large unused outputs
+# Large regenerable outputs
 results/**/factorial_grouped_shot_results.csv
 results/maxcor_probe/
+results/*.log
+
+# Notebook execution copies
+notebooks/executed.ipynb
