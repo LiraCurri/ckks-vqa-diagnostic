@@ -3,18 +3,25 @@ Earlier topology comparison, superseded by evalmod_factorial_observable_study.py
 
 The factorial study imports this module's configuration, datasets and masks,
 classical baselines (weighted_ls, direct_spherical, direct_log_monomial),
-metrics and gate primitives. The experiment assembled in run_experiment,
-run_layer_sweep and main is not used for the reported results; its design
-does not match connectivity across arms, reads signed amplitudes rather than
-Pauli expectations, has no rotation after the final diagonal entangling block,
-and draws its "random_twisted" graph from a single fixed seed.
+metrics and gate primitives. In this file, as there, q0 is the carry range
+written K in the manuscript.
+
+The experiment assembled in run_experiment, run_layer_sweep and main is not
+used for the reported results. Its design does not match connectivity across
+arms (every arm also applies a CZ chain on adjacent qubits); it reads signed
+amplitudes rather than Pauli expectations, so no decoder is crossed with the
+topologies; it has no rotation after the final diagonal entangling block
+(harmless with this amplitude readout, a degeneracy once Z-type observables
+are read); and it draws its "random_twisted" graph from a single fixed seed.
 
 add_comparative_metrics defines
 
     recovery_fraction = (RMSE_zero - RMSE_model) / (RMSE_zero - RMSE_reference),
 
-which is normalised by the reference's own gap to the zero polynomial and so
-approaches 1 whenever the reference is poor.
+which is normalised by the reference's own gap to the zero polynomial. It
+measures agreement with the reference, not accuracy: where the reference is
+itself close to the zero polynomial, as at q0 = 16, a value near 1 still
+describes a poor fit and the ratio is sensitive to small differences.
 
 The original header follows.
 
@@ -161,6 +168,8 @@ def odd_degrees(degree: int) -> np.ndarray:
 
 
 def validate_model_size(degree: int, n_qubits: int) -> None:
+    # Written for amplitude decoding. The factorial study reuses the check: its
+    # 16 Pauli observables match the 16 odd coefficients of degree 31.
     n_coeffs = len(odd_degrees(degree))
     if 2**n_qubits != n_coeffs:
         raise ValueError(
@@ -542,6 +551,10 @@ def model_bounds(cfg: Config) -> List[Tuple[float, float]]:
 
 
 def _optimizer_options(cfg: Config) -> Dict[str, float | int]:
+    # Also used by the classical references of the factorial study
+    # (direct_log_monomial_fit, direct_spherical_fit). No maxfun is set, so they
+    # run under SciPy's default cap of 15,000 evaluations whatever --maxfun the
+    # factorial study is given, and no gradient is supplied (forward differences).
     if cfg.optimizer.upper() == "L-BFGS-B":
         return {
             "maxiter": cfg.maxiter,

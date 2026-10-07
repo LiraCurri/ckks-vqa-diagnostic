@@ -14,14 +14,29 @@ both metrics (228 p-values); paired_factorial_tests deliberately does not
 adjust within a metric. Each contrast carries a percentile bootstrap interval
 for the median difference.
 
-Reproduction note:
-The main results reported in the manuscript use maxfun=1_000_000 so that
-termination is governed primarily by convergence criteria rather than the
-SciPy default function-evaluation cap.
+Naming: q0 in this file is the carry range, written K in the manuscript
+(K in {8, 16}); it is not the modulus q_0 of the manuscript's appendix.
 
-An earlier run used the default maxfun=15_000. That run is retained only as
-an optimization-budget diagnostic and should not be mixed with the main
+Training uses exact expectations and L-BFGS-B without a supplied gradient, so
+SciPy estimates the gradient by forward differences. Finite-shot rows are
+computed post hoc from the trained states; the manuscript does not report them.
+
+Reproduction note:
+The run reported in the manuscript is
+
+    python src/evalmod_factorial_observable_study.py --full --maxfun 1000000 \
+        --output-dir results/factorial_relabelled
+
+maxfun=1_000_000 lets termination be governed by the convergence criteria
+rather than by SciPy's default cap of 15,000 function evaluations. Without
+--maxfun and --output-dir the script uses that default cap and writes to
+results/evalmod_factorial_observable_study, which holds an earlier run kept
+only as an optimisation-budget diagnostic; it should not be mixed with the
 reported CSVs.
+
+Companion scripts that import this module: topology_rank_check.py (ring
+correlators and Jacobian ranks), topology_structured_null.py (the
+structure-matched classical null) and contrast_records.py.
 
 Requires topology_aware_evalmod_experiments_v3.py for shared utilities.
 """
@@ -58,12 +73,17 @@ PAIR_TOPOLOGIES: Dict[str, Tuple[Tuple[int, int], ...]] = {
     "mirror": ((1, 2), (3, 0)),
     "crossed": ((0, 2), (1, 3)),
 }
+# Optional fixed CZ joining the two pairs after each layer (--bridge). It breaks
+# the product structure of Proposition 3 and is not used for the reported
+# results. The mirror edge is the sigma-image of the nearest edge.
 BRIDGE_EDGES: Dict[str, Tuple[int, int]] = {
     "nearest": (1, 2),
     "mirror": (2, 3),
     "crossed": (0, 1),
 }
-# Canonical decoder matchings, used by the nearest and crossed circuits.
+# Canonical decoder matchings, used by the nearest and crossed circuits. In both
+# frames an alignment label names the pairs the decoder's XX, YY, XY and YX
+# correlators are supported on, so "matched" means decoder_alignment == topology.
 DECODER_PAIRS: Dict[str, Tuple[Tuple[int, int], ...]] = {
     "nearest": ((0, 1), (2, 3)),
     "mirror": ((0, 3), (1, 2)),
@@ -72,6 +92,8 @@ DECODER_PAIRS: Dict[str, Tuple[Tuple[int, int], ...]] = {
 # sigma maps the nearest and mirror matchings to each other and fixes the crossed one.
 SIGMA_ALIGNMENT = {"nearest": "mirror", "mirror": "nearest", "crossed": "crossed"}
 CIRCUIT_FRAME = {"nearest": 0, "mirror": 1, "crossed": 0}
+# False reads the mirror circuit through the canonical decoders, which breaks
+# the equivalence; tests/test_factorial_relabelling.py uses it as an injected fault.
 USE_SIGMA_FRAME = True
 PHASE_RULES = ("uniform", "oriented")
 DECODER_ALIGNMENTS = tuple(PAIR_TOPOLOGIES)
@@ -79,6 +101,10 @@ CIRCUIT_METHODS = tuple(
     f"{topology}_{phase_rule}" for topology in PAIR_TOPOLOGIES for phase_rule in PHASE_RULES
 )
 FAMILY_NAMES = ("local", "z_structure", "aligned_same_axis", "aligned_mixed_axis")
+# Families common to every decoder. z_structure holds the four edges of the ring
+# 0-1-2-3-0, the union of the nearest and mirror matchings: by Proposition 3 two
+# of them factorise under a nearest or mirror circuit and all four under the
+# crossed circuit (checked in topology_rank_check.py).
 FIXED_OBSERVABLE_FAMILIES: Dict[str, Tuple[str, ...]] = {
     "local": ("ZIII", "IZII", "IIZI", "IIIZ"),
     "z_structure": ("ZZII", "IZZI", "IIZZ", "ZIIZ"),
@@ -535,6 +561,7 @@ def train_model(*, q0, method, decoder_alignment, seed, cache, cfg, use_bridge) 
                                                cfg=cfg, use_bridge=use_bridge)
         return fast_regularized_loss(coefficients, cache, cfg)
 
+    # No jac is passed: L-BFGS-B estimates the gradient by forward differences.
     result = minimize(objective, initial_model_params(cfg, seed), method=cfg.optimizer,
                       bounds=model_bounds(cfg), options=optimizer_options(cfg))
     state, expectations, coefficients, log_scales = evaluate_model(
@@ -728,7 +755,9 @@ def _bootstrap_median_ci(differences, n_boot=N_BOOT, seed=BOOT_SEED):
 
 def _wilcoxon_row(differences, context):
     differences = np.asarray(differences, dtype=float)
-    # Exact zeros, matching the Pratt handling inside scipy.stats.wilcoxon.
+    # n_zero counts exact zeros, matching the Pratt handling inside
+    # scipy.stats.wilcoxon. A vector that is zero to within 1e-8 everywhere is
+    # not tested and is given p = 1.
     n_zero = int(np.sum(differences == 0.0))
     if np.allclose(differences, 0.0):
         statistic, p_value = 0.0, 1.0
@@ -927,9 +956,11 @@ def _cli() -> None:
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--smoke", action="store_true", help="tiny end-to-end run of every output path")
     mode.add_argument("--full", action="store_true", help="the full 2,160-optimisation study")
-    parser.add_argument("--output-dir", default=None)
+    parser.add_argument("--output-dir", default=None,
+                        help="the reported run is in results/factorial_relabelled")
     parser.add_argument("--maxfun", type=int, default=None,
-                        help="function-evaluation cap; omit to reproduce the published run")
+                        help="function-evaluation cap; the reported run uses 1000000 "
+                             "(omitted: SciPy's default of 15,000)")
     parser.add_argument("--bridge", action="store_true",
                         help="structural diagnostic with a fixed CZ bridge; not used for the reported results")
     args = parser.parse_args()
