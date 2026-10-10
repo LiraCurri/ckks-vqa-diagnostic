@@ -142,8 +142,7 @@ configuration it reads the stored results and reruns no experiment; the `RUN_*`
 flags in the first code cell rerun individual studies. The notebook also runs
 the fast tests, cross-checks its own contrast statistics against the factorial
 module, and writes `paper/paper_values.tex`, `paper/family_table.tex` and
-`paper/topology_table.tex`. Any macro it cannot compute appears as `??` in the
-PDF and is listed at the end.
+`paper/topology_table.tex`.
 
 ## What is stored and what is regenerated
 
@@ -151,12 +150,3 @@ All result files the notebook reads are stored in `results/`. The large
 per-shot files `factorial_grouped_shot_results.csv` (about 70 MB per run) are
 not committed; the factorial script regenerates them, and the notebook uses the
 summaries. The manuscript source is not part of this repository.
-
-## Line endings
-
-The repository is developed on Windows and Linux. A `.gitattributes` file with
-`* text=auto` normalises line endings in the repository, so that files differing
-only in CRLF/LF do not appear as modified. If `git status` lists many files
-with no content change, run `git add --renormalize .` once.
-
-## License
